@@ -37,11 +37,11 @@ exports.findAll = function(req, res) {
     });
 };
 
-exports.addWine = function(req, res) {
-    var wine = req.body;
-    console.log('Adding wine: ' + JSON.stringify(wine));
-    db.collection('wines', function(err, collection) {
-        collection.insert(wine, {safe:true}, function(err, result) {
+exports.addMed = function(req, res) {
+    var med = req.body;
+    console.log('Adding med: ' + JSON.stringify(med));
+    db.collection('meds', function(err, collection) {
+        collection.insert(med, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred'});
             } else {
@@ -52,29 +52,29 @@ exports.addWine = function(req, res) {
     });
 }
 
-exports.updateWine = function(req, res) {
+exports.updateMed = function(req, res) {
     var id = req.params.id;
     var wine = req.body;
     delete wine._id;
-    console.log('Updating wine: ' + id);
+    console.log('Updating med: ' + id);
     console.log(JSON.stringify(wine));
-    db.collection('wines', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, wine, {safe:true}, function(err, result) {
+    db.collection('meds', function(err, collection) {
+        collection.update({'_id':new BSON.ObjectID(id)}, med, {safe:true}, function(err, result) {
             if (err) {
-                console.log('Error updating wine: ' + err);
+                console.log('Error updating med: ' + err);
                 res.send({'error':'An error has occurred'});
             } else {
                 console.log('' + result + ' document(s) updated');
-                res.send(wine);
+                res.send(med);
             }
         });
     });
 }
 
-exports.deleteWine = function(req, res) {
+exports.deleteMed = function(req, res) {
     var id = req.params.id;
-    console.log('Deleting wine: ' + id);
-    db.collection('wines', function(err, collection) {
+    console.log('Deleting med: ' + id);
+    db.collection('meds', function(err, collection) {
         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred - ' + err});
@@ -91,7 +91,7 @@ exports.deleteWine = function(req, res) {
 // You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
 
-    var wines = [
+    var meds = [
     {
         name: "CHATEAU DE SAINT COSME",
         year: "2009",
