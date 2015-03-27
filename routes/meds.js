@@ -5,14 +5,14 @@ var Server = mongo.Server,
     BSON = mongo.BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('winedb', server, {safe: true});
+db = new Db('meddb', server, {safe: true});
 
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'winedb' database");
-        db.collection('wines', {safe:true}, function(err, collection) {
+        console.log("Connected to 'meddb' database");
+        db.collection('meds', {safe:true}, function(err, collection) {
             if (err) {
-                console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
+                console.log("The 'meds' collection doesn't exist. Creating it with sample data...");
                 populateDB();
             }
         });
@@ -21,8 +21,8 @@ db.open(function(err, db) {
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving wine: ' + id);
-    db.collection('wines', function(err, collection) {
+    console.log('Retrieving med: ' + id);
+    db.collection('meds', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
             res.send(item);
         });
@@ -30,7 +30,7 @@ exports.findById = function(req, res) {
 };
 
 exports.findAll = function(req, res) {
-    db.collection('wines', function(err, collection) {
+    db.collection('meds', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
         });
@@ -54,10 +54,10 @@ exports.addMed = function(req, res) {
 
 exports.updateMed = function(req, res) {
     var id = req.params.id;
-    var wine = req.body;
-    delete wine._id;
+    var med = req.body;
+    delete med._id;
     console.log('Updating med: ' + id);
-    console.log(JSON.stringify(wine));
+    console.log(JSON.stringify(med));
     db.collection('meds', function(err, collection) {
         collection.update({'_id':new BSON.ObjectID(id)}, med, {safe:true}, function(err, result) {
             if (err) {
