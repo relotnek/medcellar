@@ -44,12 +44,15 @@ window.Med = Backbone.Model.extend({
     defaults: {
         _id: null,
         name: "",
-        grapes: "",
-        country: "USA",
-        region: "California",
-        year: "",
+        classification: "USA",
         description: "",
-        picture: null
+        picture: null,
+        indication: "",
+        directions: "",
+        warnings: "",
+        interactions: "",
+        supply: "",
+        price: 0
     }
 });
 
