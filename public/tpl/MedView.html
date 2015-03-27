@@ -41,45 +41,61 @@
                         <label for="indication" class="control-label">Indication:</label>
 
                         <div class="controls">
-                            <input type="text" id="country" name="country" value="<%= country %>"/>
+                            <input type="text" id="indication" name="indication" value="<%= indication %>"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="region" class="control-label">Region:</label>
+                        <label for="supply" class="control-label">Supply:</label>
 
                         <div class="controls">
-                            <input type="text" id="region" name="region" value="<%= region %>"/>
+                            <input type="text" id="supply" name="supply" value="<%= supply %>"/>
+                            <span class="help-inline"></span>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="year" class="control-label">Year:</label>
+                        <label for="price" class="control-label">Price:</label>
 
                         <div class="controls">
-                            <select class="input-small" id="year" name="year" value="<%= year %>">
-                                <option
-                                <%= year == 2012?'selected':'' %>>2012</option>
-                                <option
-                                <%= year == 2011?'selected':'' %>>2011</option>
-                                <option
-                                <%= year == 2010?'selected':'' %>>2010</option>
-                                <option
-                                <%= year == 2009?'selected':'' %>>2009</option>
-                                <option
-                                <%= year == 2008?'selected':'' %>>2008</option>
-                                <option
-                                <%= year == 2007?'selected':'' %>>2007</option>
-                            </select>
+                            <input type="text" id="price" name="price" value="<%= price %>"/>
                         </div>
                     </div>
 
+
                     <div class="control-group">
-                        <label for="description" class="control-label">Notes:</label>
+                        <label for="description" class="control-label">Description:</label>
 
                         <div class="controls">
                             <textarea id="description" name="description" style="width: 90%;" rows="6"><%= description
+                                %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="warnings" class="control-label">Warnings:</label>
+
+                        <div class="controls">
+                            <textarea id="warnings" name="warnings" style="width: 90%;" rows="6"><%= warnings
+                                %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="interactions" class="control-label">Interactions:</label>
+
+                        <div class="controls">
+                            <textarea id="interactions" name="interactions" style="width: 90%;" rows="6"><%= interactions
+                                %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="directions" class="control-label">Directions:</label>
+
+                        <div class="controls">
+                            <textarea id="directions" name="directions" style="width: 90%;" rows="6"><%= directions
                                 %></textarea>
                         </div>
                     </div>
