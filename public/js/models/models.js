@@ -11,13 +11,10 @@ window.Med = Backbone.Model.extend({
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a name"};
         };
 
-        this.validators.grapes = function (value) {
-            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a grape variety"};
+        this.validators.description = function (value) {
+            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a description"};
         };
 
-        this.validators.country = function (value) {
-            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a country"};
-        };
     },
 
     validateItem: function (key) {
@@ -43,15 +40,15 @@ window.Med = Backbone.Model.extend({
 
     defaults: {
         _id: null,
-        name: "",
-        classification: "USA",
+        name: "No Name",
+        classification: "Unclassified",
         description: "",
         picture: null,
-        indication: "",
-        directions: "",
-        warnings: "",
-        interactions: "",
-        supply: "",
+        indication: "No Indications",
+        directions: "No Directions",
+        warnings: "No Warnings",
+        interactions: "No Interactions",
+        supply: "No Supply",
         price: 0
     }
 });

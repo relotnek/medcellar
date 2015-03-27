@@ -1,6 +1,7 @@
 <a href="#meds/<%= _id %>" class="thumbnail plain" style="text-align: center;">
     <img src="<%= picture === null ? 'pics/generic.jpg' : 'pics/' + picture %>" height="150" width="125" alt="">
     <h5><%= name %></h5>
-    <%= year %> <%= grapes %><br/>
-    <i class="icon-globe"></i> <%= region %>, <%= country %>
+    for <%= indication %>
+    $<%= price %> <br/>
+    <i class="icon-globe"></i> <%= classification %> | <%= supply %>
 </a>
