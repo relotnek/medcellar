@@ -98,7 +98,7 @@ var populateDB = function() {
         grapes: "Grenache / Syrah",
         country: "France",
         region: "Southern Rhone",
-        description: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely wine, which makes an excellent complement to fish dishes.",
+        description: "The aromas of fruit and spice give one a hint of the light drinkability of this lovely med, which makes an excellent complement to fish dishes.",
         picture: "saint_cosme.jpg"
     },
     {
@@ -107,7 +107,7 @@ var populateDB = function() {
         grapes: "Tempranillo",
         country: "Spain",
         region: "Rioja",
-        description: "A resurgence of interest in boutique vineyards has opened the door for this excellent foray into the dessert wine market. Light and bouncy, with a hint of black truffle, this wine will not fail to tickle the taste buds.",
+        description: "A resurgence of interest in boutique vineyards has opened the door for this excellent foray into the dessert med market. Light and bouncy, with a hint of black truffle, this med will not fail to tickle the taste buds.",
         picture: "lan_rioja.jpg"
     },
     {
@@ -116,7 +116,7 @@ var populateDB = function() {
         grapes: "Sauvignon Blanc",
         country: "USA",
         region: "California Central Cosat",
-        description: "The cache of a fine Cabernet in ones wine cellar can now be replaced with a childishly playful wine bubbling over with tempting tastes of black cherry and licorice. This is a taste sure to transport you back in time.",
+        description: "The cache of a fine Cabernet in ones med cellar can now be replaced with a childishly playful med bubbling over with tempting tastes of black cherry and licorice. This is a taste sure to transport you back in time.",
         picture: "margerum.jpg"
     },
     {
@@ -134,7 +134,7 @@ var populateDB = function() {
         grapes: "Pinot Noir",
         country: "USA",
         region: "Oregon",
-        description: "One cannot doubt that this will be the wine served at the Hollywood award shows, because it has undeniable star power. Be the first to catch the debut that everyone will be talking about tomorrow.",
+        description: "One cannot doubt that this will be the med served at the Hollywood award shows, because it has undeniable star power. Be the first to catch the debut that everyone will be talking about tomorrow.",
         picture: "rex_hill.jpg"
     },
     {
@@ -143,7 +143,7 @@ var populateDB = function() {
         grapes: "Sangiovese Merlot",
         country: "Italy",
         region: "Tuscany",
-        description: "Though soft and rounded in texture, the body of this wine is full and rich and oh-so-appealing. This delivery is even more impressive when one takes note of the tender tannins that leave the taste buds wholly satisfied.",
+        description: "Though soft and rounded in texture, the body of this med is full and rich and oh-so-appealing. This delivery is even more impressive when one takes note of the tender tannins that leave the taste buds wholly satisfied.",
         picture: "viticcio.jpg"
     },
     {
@@ -152,7 +152,7 @@ var populateDB = function() {
         grapes: "Merlot",
         country: "France",
         region: "Bordeaux",
-        description: "Though dense and chewy, this wine does not overpower with its finely balanced depth and structure. It is a truly luxurious experience for the senses.",
+        description: "Though dense and chewy, this med does not overpower with its finely balanced depth and structure. It is a truly luxurious experience for the senses.",
         picture: "le_doyenne.jpg"
     },
     {
@@ -161,7 +161,7 @@ var populateDB = function() {
         grapes: "Merlot",
         country: "France",
         region: "Bordeaux",
-        description: "The light golden color of this wine belies the bright flavor it holds. A true summer wine, it begs for a picnic lunch in a sun-soaked vineyard.",
+        description: "The light golden color of this med belies the bright flavor it holds. A true summer med, it begs for a picnic lunch in a sun-soaked vineyard.",
         picture: "bouscat.jpg"
     },
     {
@@ -170,7 +170,7 @@ var populateDB = function() {
         grapes: "Pinot Noir",
         country: "USA",
         region: "California",
-        description: "With hints of ginger and spice, this wine makes an excellent complement to light appetizer and dessert fare for a holiday gathering.",
+        description: "With hints of ginger and spice, this med makes an excellent complement to light appetizer and dessert fare for a holiday gathering.",
         picture: "block_nine.jpg"
     },
     {
@@ -179,7 +179,7 @@ var populateDB = function() {
         grapes: "Pinot Noir",
         country: "USA",
         region: "Oregon",
-        description: "Though subtle in its complexities, this wine is sure to please a wide range of enthusiasts. Notes of pomegranate will delight as the nutty finish completes the picture of a fine sipping experience.",
+        description: "Though subtle in its complexities, this med is sure to please a wide range of enthusiasts. Notes of pomegranate will delight as the nutty finish completes the picture of a fine sipping experience.",
         picture: "domaine_serene.jpg"
     },
     {
@@ -188,7 +188,7 @@ var populateDB = function() {
         grapes: "Pinot Gris",
         country: "Argentina",
         region: "Mendoza",
-        description: "Solid notes of black currant blended with a light citrus make this wine an easy pour for varied palates.",
+        description: "Solid notes of black currant blended with a light citrus make this med an easy pour for varied palates.",
         picture: "bodega_lurton.jpg"
     },
     {
@@ -233,7 +233,7 @@ var populateDB = function() {
         grapes: "Chardonnay",
         country: "USA",
         region: "California",
-        description: "Keep an eye out for this winery in coming years, as their chardonnays have reached the peak of perfection.",
+        description: "Keep an eye out for this medry in coming years, as their chardonnays have reached the peak of perfection.",
         picture: "shafer.jpg"
     },
     {
@@ -251,7 +251,7 @@ var populateDB = function() {
         grapes: "Pinot Gris",
         country: "France",
         region: "Alsace",
-        description: "Fresh as new buds on a spring vine, this dewy offering is the finest of the new generation of pinot grigios.  Enjoy it with a friend and a crown of flowers for the ultimate wine tasting experience.",
+        description: "Fresh as new buds on a spring vine, this dewy offering is the finest of the new generation of pinot grigios.  Enjoy it with a friend and a crown of flowers for the ultimate med tasting experience.",
         picture: "hugel.jpg"
     },
     {
@@ -296,7 +296,7 @@ var populateDB = function() {
         grapes: "Sauvignon Blanc",
         country: "New Zealand",
         region: "South Island",
-        description: "Best served chilled with melon or a nice salty prosciutto, this sauvignon blanc is a staple in every Italian kitchen, if not on their wine list.  Request the best, and you just may get it.",
+        description: "Best served chilled with melon or a nice salty prosciutto, this sauvignon blanc is a staple in every Italian kitchen, if not on their med list.  Request the best, and you just may get it.",
         picture: "momo.jpg"
     },
     {
@@ -307,10 +307,20 @@ var populateDB = function() {
         region: "Washington",
         description: "Legend has it the gods didn't share their ambrosia with mere mortals.  This merlot may be the closest we've ever come to a taste of heaven.",
         picture: "waterbrook.jpg"
-    }];
+    },
+    {
+        name: "Vicodin",
+        year: "2009",
+        grapes: "Opioid and Analgesic",
+        country: "USA",
+        region: "Washington",
+        description: "Risk of hepatotoxicity may result with acetaminophen doses >4g per day or involving more than one acetaminophen-containing product. Head injury. Increased intracranial pressure. Acute abdomen. Impaired renal, hepatic, thyroid, pulmonary, or adrenocortical function. GI or GU obstruction. Asthma. Post-op. Drug abusers. Elderly. Debilitated. Labor and delivery. Pregnancy (Cat.C). Nursing mothers: not recommended.",
+        picture: "vicodin.jpg"
+    }
+    ];
 
-    db.collection('wines', function(err, collection) {
-        collection.insert(wines, {safe:true}, function(err, result) {});
+    db.collection('meds', function(err, collection) {
+        collection.insert(meds, {safe:true}, function(err, result) {});
     });
 
 };

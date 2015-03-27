@@ -1,6 +1,6 @@
 {
-    "name": "wine-cellar",
-    "description": "Wine Cellar Application",
+    "name": "med-cellar",
+    "description": "Med Cellar Application",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
