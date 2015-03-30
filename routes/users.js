@@ -90,6 +90,12 @@ exports.login = function(req, res, next) {
     });
   })(req, res, next);
 };
+
+exports.ensureAuth = function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login');
+};
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.
 // You'd typically not find this code in a real-life app, since the database would already exist.

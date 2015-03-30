@@ -20,13 +20,13 @@ app.configure(function () {
 });
 
 app.get('/users', user.findAll);
-app.post('/login', user.login );
-app.get('/populate', user.dbBuild);
-app.get('/meds', med.findAll);
-app.get('/meds/:id', med.findById);
-app.post('/meds', med.addMed);
-app.put('/meds/:id', med.updateMed);
-app.delete('/meds/:id', med.deleteMed);
+app.post('/login', user.ensureAuth, user.login );
+app.get('/populate', user.dbBuild );
+app.get('/meds', user.ensureAuth, med.findAll);
+app.get('/meds/:id', user.ensureAuth, med.findById);
+app.post('/meds', user.ensureAuth, med.addMed);
+app.put('/meds/:id', user.ensureAuth, med.updateMed);
+app.delete('/meds/:id', user.ensureAuth, med.deleteMed);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
