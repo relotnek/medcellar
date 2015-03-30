@@ -1,15 +1,16 @@
 {
-    "name": "med-cellar",
-    "description": "Med Cellar Application",
-    "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "express": "3.x",
-        "mongodb": "1.1.8",
-        "socket.io": "0.9.10"
-    },
-    "engines": {
-        "node": "0.8.4",
-        "npm": "1.1.49"
-    }
+  "name": "med-cellar",
+  "description": "Med Cellar Application",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "mongodb": "1.1.8",
+    "passport-local": "^1.0.0",
+    "socket.io": "0.9.10"
+  },
+  "engines": {
+    "node": "0.8.4",
+    "npm": "1.1.49"
+  }
 }
