@@ -55,12 +55,10 @@ var AppRouter = Backbone.Router.extend({
     },
 
     login: function() {
-        if (!this.LoginView) {
-            this.LoginView = new LoginView();
+        if (!this.loginView) {
+            this.loginView = new LoginView();
         }
-
-        var user = new User();
-        $('#content').html(new LoginView({ model: user }).el);
+        $('#content').html(this.loginView.el);
 
     }
 

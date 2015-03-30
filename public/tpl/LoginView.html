@@ -1,4 +1,4 @@
-<div class="home-hero">
+<div class="row-fluid">
             <h1>Login to Med Cellar</h1>
 
 <div class="row-fluid">
@@ -11,7 +11,7 @@
             <br/>
 
             <div class="row">
-                <div class="span8">
+                <div class="span4">
 
                     <div class="control-group">
                         <label for="username" class="control-label">Name:</label>
@@ -23,21 +23,16 @@
                     </div>
 
                     <div class="control-group">
-                        <label for="classification" class="control-label">Classification:</label>
+                        <label for="classification" class="control-label">Password:</label>
 
                         <div class="controls">
-                            <input type="password" id="password" name="password" value="<%= password %>"/>
+                            <input type="password" id="password" name="password" />
                             <span class="help-inline"></span>
                         </div>
+                        <button type="submit" class="btn btn-success pull-right">Login</button>
                     </div>
+            </div>
 
         </fieldset>
-
-        <input type="submit" class="btn btn-success">Go</input>
-
     </form>
-
-</div>
-
-
 </div>
