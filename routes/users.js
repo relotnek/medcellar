@@ -50,7 +50,9 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+
 var User = mongoose.model('User', userSchema);
+
 passport.use(new LocalStrategy(function(username, password, done) {
   User.findOne({ username: username }, function(err, user) {
     if (err) { return done(err); }
@@ -84,7 +86,7 @@ exports.login = function(req, res, next) {
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.redirect('/meds');
+      return res.redirect('/#meds');
     });
   })(req, res, next);
 };
@@ -92,8 +94,6 @@ exports.login = function(req, res, next) {
 // Populate database with sample data -- Only used once: the first time the application is started.
 // You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
-
-
     var user = new User({ username: 'ktoler', email: 'ktoler@ktoler.com', password: 'slapdabass'});
     user.save(function(err){
         if(err){

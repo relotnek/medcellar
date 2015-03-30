@@ -6,7 +6,8 @@ var AppRouter = Backbone.Router.extend({
         "meds/page/:page"	: "list",
         "meds/add"         : "addMed",
         "meds/:id"         : "medDetails",
-        "about"             : "about"
+        "about"             : "about",
+        "login"             : "login"
     },
 
     initialize: function () {
@@ -51,11 +52,21 @@ var AppRouter = Backbone.Router.extend({
         }
         $('#content').html(this.aboutView.el);
         this.headerView.selectMenuItem('about-menu');
+    },
+
+    login: function() {
+        if (!this.LoginView) {
+            this.LoginView = new LoginView();
+        }
+
+        var user = new User();
+        $('#content').html(new LoginView({ model: user }).el);
+
     }
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'MedView', 'MedListItemView', 'AboutView'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'MedView', 'MedListItemView', 'AboutView','LoginView'], function() {
     app = new AppRouter();
     Backbone.history.start();
 });
