@@ -37,6 +37,19 @@
 //        }
     </script>
 
+    <!-- support for analytics coming soon! -->
+    <script>
+      try {
+        var hashParam = location.hash.split("#")[1];
+        var paramName = hashParam.split('=')[0];
+        var paramValue = hashParam.split('=')[1];
+        if (paramName == 'AnalyticsMode') {
+            document.write('<button type="button">' + 'Enable Analytics' + paramValue + '</button>');
+        }
+      } catch(err) {
+     }
+    </script>
+
 </head>
 
 <body>
