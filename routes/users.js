@@ -61,6 +61,10 @@ passport.use(new LocalStrategy(function(username, password, done) {
     });
   });
 }));
+
+exports.findAll = function(req,res){
+  res.send( { user: req.user });
+};
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.
 // You'd typically not find this code in a real-life app, since the database would already exist.
