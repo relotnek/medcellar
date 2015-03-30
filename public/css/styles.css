@@ -78,14 +78,13 @@ legend {
 .login-hero {
     font-family: "Andika";
     font-size: 36;
-    color: white;
+    color: #000;
     background-image: url('img/med_bg.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     margin-top: -19px;
     padding: 180px;
     text-align : center;
-    text-shadow: 3px 3px 3px #000;
 }
 
 @media only screen and ( max-width : 1000px ) {

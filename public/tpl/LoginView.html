@@ -1,38 +1,16 @@
 <div class="login-hero">
-            <h1>Login to Med Cellar</h1>
-
-<div class="row-fluid">
-
-    <form class="form-horizontal span12" method="post" action="/login">
-
-        <fieldset>
-
-            <legend>Login Form</legend>
-            <br/>
-
-            <div class="row">
-                <div class="span4">
-
-                    <div class="control-group">
-                        <label for="username" class="control-label">Name:</label>
-
-                        <div class="controls">
-                            <input type="text" id="username" name="username" />
-                            <span class="help-inline"></span>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="classification" class="control-label">Password:</label>
-
-                        <div class="controls">
-                            <input type="password" id="password" name="password" />
-                            <span class="help-inline"></span>
-                        </div>
-                        <button type="submit" class="btn btn-success pull-right">Login</button>
-                    </div>
-            </div>
-
-        </fieldset>
-    </form>
+<h1>Med Cellar</h1>
+<div class="well well-sm">
+<form action="/login" method="post">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input name="username" type="text" class="form-control" id="username" placeholder="Enter Username"></input>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password"></input>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
 </div>

@@ -140,6 +140,30 @@ var populateDB = function() {
         directions: "Take 1 dose as needed about 1 hr (½–4 hrs) before sexual activity at frequency of up to once daily. Initially 50mg. May reduce dose to 25mg or increase to max of 100mg. Elderly, hepatic impairment, severe renal impairment, or concomitant potent CYP3A4 inhibitors (eg, erythromycin, ketoconazole, itraconazole, saquinavir): consider initial dose of 25mg. Concomitant ritonavir: max single sildenafil dose of 25mg in 48hrs. Concomitant α-blockers (patients should be stable on α-blocker therapy before starting): initially 25mg.",
         picture: "viagra.jpg"
     },
+    {
+        name: "Mucinex",
+        classification: "Expectorant",
+        indication: "Chest congestion",
+        supply: "600mg—20, 40, 100, 500; Max Strength—14, 28; Pkts—12; Soln—4oz",
+        price: 8.99,
+        description: "Sildenafil citrate 25mg, 50mg, 100mg; tabs.",
+        warnings: "Asthma. Lower respiratory disorders. Pregnancy. Nursing mothers. Mini-Melts: Renal disease. Magnesium-restricted diet.",
+        interactions: "Concomitant live vaccines, biologic DMARDs or potent immunosuppressants (eg, azathioprine, cyclosporine): not recommended. Potentiated by potent CYP3A4 inhibitors (eg, ketoconazole), or drugs that result in both moderate CYP3A4 and potent CYP2C19 (eg, fluconazole) inhibition. Antagonized by potent CYP3A4 inducers (eg, rifampin); see Adults.",
+        directions: "Swallow whole. 1–2 tabs every 12 hours. Max: 4 tabs/day",
+        picture: "mucinex.jpg"
+    },
+    {
+        name: "FIORICET w. CODEINE",
+        classification: "Opioid + barbiturate + analgesic/antipyretic + CNS stimulant",
+        indication: "Tension (or muscle contraction) headache",
+        supply: "Caps—100",
+        price: 30,
+        description: "Codeine phosphate 30mg, butalbital 50mg, acetaminophen 300mg, caffeine 40mg; caps.",
+        warnings: "Hepatotoxicity (acetaminophen >4g/day). Drug abusers. Impaired hepatic or renal function (monitor). Acute abdominal conditions. Elderly. Debilitated. Pregnancy (Cat.C). Nursing mothers: not recommended. Also with Codeine: risk of respiratory depression and death related to ultra-rapid metabolizers of codeine (esp. in children in post-op tonsillectomy and/or adenoidectomy). Obstructive sleep apnea. Head injury. Increased intracranial pressure. Hypothyroidism. Addison’s disease. GI or GU obstruction. Abuse potential. Labor and delivery.",
+        interactions: "May be potentiated by MAOIs. May potentiate alcohol, general anesthetics, tranquilizers, sedative-hypnotics, other narcotic analgesics or CNS depressants. Induction of drug-metabolizing hepatic enzymes. Acetaminophen may cause false (+) urine test for 5-hydroxyindoleacetic acid. Codeine may increase serum amylase levels.",
+        directions: "1–2 caps every 4hrs; max 6/da",
+        picture: "fiorcetcodeine.jpg"
+    },
     ];
 
     db.collection('meds', function(err, collection) {
