@@ -21,6 +21,7 @@ app.configure(function () {
 
 app.get('/users', user.findAll);
 app.post('/login', user.login );
+app.get('/populate', user.dbBuild);
 app.get('/meds', med.findAll);
 app.get('/meds/:id', med.findById);
 app.post('/meds', med.addMed);
