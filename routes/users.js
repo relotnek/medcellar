@@ -1,6 +1,6 @@
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var crypto = require('cryto-js');
+var crypto = require('crypto-js');
 var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -149,4 +149,5 @@ var populateDBMD5 = function() {
         } else {
             console.log('user: ' + user.username + ' saved.');
         }
-});
+    });
+}
