@@ -1,9 +1,9 @@
-var db = require('./grunt/db/db');
 
-module.exports = function(grunt) {
-	grunt.registerTask('builddb', 'populate the database', function() {
 	//BUILD DB
-	done = this.async();
+
+	var db = require('../db/db');
+
+	var builddb = function(){
 	var user = new db.user({ username: 'ktoler', email: 'ktoler@ktoler.com', password: 'slapdabass'});
 	console.log(user);
     user.save(function(err){
@@ -12,8 +12,7 @@ module.exports = function(grunt) {
     	} else {
     		console.log("User: " + user.username + " Saved.");
     	}
-    	db.db.close(done);
-
     });
-	});
-};
+
+    exports.builddb = builddb();
+	};
