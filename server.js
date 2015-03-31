@@ -19,8 +19,9 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname,'public')));
 });
 
-app.post('/login', user.ensureAuth, user.login );
-app.get('/populate', user.dbBuild );
+// TODO - Externalize /populate in Grunt:build with direct db calls - Reference authentication-md5
+app.get('/populate', user.dbBuild);
+app.post('/login', user.ensureAuth, user.login);
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);
 app.post('/meds', user.ensureAuth, med.addMed);
