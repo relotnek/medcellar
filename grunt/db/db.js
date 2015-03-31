@@ -19,6 +19,19 @@ var userSchema = mongoose.Schema({
   password: { type: String, required: true},
 });
 
+var medSchema = mongoose.Schema({
+  name: { type: String, required: true, unique: true},
+  classification: { type: String, required: false, unique: false},
+  indication: { type: String, required: false, unique: false},
+  supply: { type: String, required: false, unique: false},
+  price: { type: Number, required: false, unique: false},
+  description: { type: String, required: false, unique: false},
+  warnings: { type: String, required: false, unique: false},
+  interactions: { type: String, required: false, unique: false},
+  directions: { type: String, required: false, unique: false},
+  picture: { type: String, required: false, unique: false}
+});
+
 userSchema.pre('save', function(next){
 // TODO - Add ability to switch betwen MD5 & BCrypt for password storage
 
@@ -46,7 +59,9 @@ bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
   });
 });
 
+var Med = mongoose.model('Med', medSchema);
 var User = mongoose.model('User', userSchema);
 
+exports.med = Med;
 exports.user = User;
 exports.db = db;
