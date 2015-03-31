@@ -1,5 +1,6 @@
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+var crypto = require('crypto-js');
 var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -19,11 +20,22 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', function(next){
-    var user = this;
+  // TODO - Add ability to switch betwen MD5 & BCrypt for password storage
 
-    if(!user.isModified('password')) return next();
+  var user = this;
 
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+  if(!user.isModified('password')) return next();
+
+  // usage of md5 for password storage
+  // TODO - Add MD5 storage
+  // TODO - Add Error Handling
+  //user.password = crypto.MD5(user.password).toString();
+  //next();
+  // catch (ex)
+  // next(ex);
+
+  // usage of bcrypt for password storage
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if(err) return next(err);
 
     bcrypt.hash(user.password, salt, function(err, hash) {
@@ -31,10 +43,12 @@ userSchema.pre('save', function(next){
       user.password = hash;
       next();
     });
-    });
+  });
 });
 
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
+    // TODO - Add ability to switch betwen MD5 & BCrypt for password storage
+
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if(err) return cb(err);
         cb(null, isMatch);
@@ -68,8 +82,15 @@ passport.use(new LocalStrategy(function(username, password, done) {
   });
 }));
 
+// TODO - Externalize in Grunt:build with direct db calls
 exports.dbBuild = function(req,res){
   populateDB();
+  res.send(200);
+};
+
+// TODO - Externalize in Grunt:build with direct db calls
+exports.dbBuildMD5 = function(req,res){
+  populateDBMD5();
   res.send(200);
 };
 
@@ -119,3 +140,14 @@ var populateDB = function() {
     });
 
 };
+
+var populateDBMD5 = function() {
+    var user = new User({ username: 'gellerb', email: 'gellerb@domain.com', password: 'coffee'});
+    user.save(function(err) {
+      if(err) {
+            console.log(err);
+        } else {
+            console.log('user: ' + user.username + ' saved.');
+        }
+    });
+}
