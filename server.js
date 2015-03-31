@@ -19,7 +19,6 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname,'public')));
 });
 
-app.get('/users', user.findAll);
 app.post('/login', user.ensureAuth, user.login );
 app.get('/populate', user.dbBuild );
 app.get('/meds', user.ensureAuth, med.findAll);
