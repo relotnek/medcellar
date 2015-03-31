@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-SALT_WORK_FACTOR = 10;
+var SALT_WORK_FACTOR = 10;
 
 mongoose.connect('localhost','meddb');
 var db = mongoose.connection;
