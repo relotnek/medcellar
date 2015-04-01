@@ -1,4 +1,5 @@
 var mongo = require('mongodb');
+var sanitizer = require('sanitizer');
 
 var Server = mongo.Server,
     Db = mongo.Db,
@@ -55,6 +56,11 @@ exports.addMed = function(req, res) {
 exports.updateMed = function(req, res) {
     var id = req.params.id;
     var med = req.body;
+    if( config.environment === 'development'){
+        for(var i in med){
+            med[i] = sanitizer.sanitize(med[i]);
+        }
+    }
     delete med._id;
     console.log('Updating med: ' + id);
     console.log(JSON.stringify(med));
