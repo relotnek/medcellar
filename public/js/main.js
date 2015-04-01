@@ -42,7 +42,9 @@ var AppRouter = Backbone.Router.extend({
 
 	addMed: function() {
         var med = new Med();
-        $('#content').html(new MedView({model: med}).el);
+        med.fetch({success: function(){
+            $("#content").html(new MedView({model: med}).el);
+        }});
         this.headerView.selectMenuItem('add-menu');
 	},
 
