@@ -1,4 +1,5 @@
 var db = require('./grunt/db/db');
+var path = require('path');
 var _ = require('underscore');
 
 
@@ -89,13 +90,14 @@ module.exports = function(grunt) {
     grunt.initConfig({
         exec: {
             dropdb: 'mongo meddb --eval "db.dropDatabase()"',
-            run: 'nodemon server.js'        },
+            run: 'nodemon server.js'
+            },
         env: {
             dev: {
-                MED_CONF: './config/config.json'
+                MED_CONF: path.resolve('./config/config.json')
                 },
             weak:{
-                MED_CONF: './config/weakconfig.json'
+                MED_CONF: path.resolve('./config/weakconfig.json')
             }
         }
     });
@@ -105,6 +107,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('buildweak', ['env:weak','exec:run']);
     grunt.registerTask('build', ['env:dev', 'exec:run']);
+
+
 
     grunt.registerTask('buildmeds', 'populate the database with meds', function() {
         var done = this.async();
