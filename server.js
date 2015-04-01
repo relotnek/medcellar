@@ -2,11 +2,12 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     helmet = require('helmet'),
-    sanitizer = require('sanitizer');
-    passport = require('passport');
-    med = require('./routes/meds');
-    user = require('./routes/users');
+    sanitizer = require('sanitizer'),
+    passport = require('passport'),
+    med = require('./routes/meds'),
+    user = require('./routes/users'),
     config = require(process.env.MED_CONF);
+
 
 var app = express();
 
@@ -32,7 +33,7 @@ app.configure(function() {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-
+app.get('/login', user.login);
 app.post('/login', user.login);
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);
