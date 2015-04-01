@@ -6,30 +6,36 @@ It contains a deliberately vulnerable branch as well as a "fixed branch"
 
 The application allows you to browse through a list of meds, as well as add, update, and delete meds.
 
+#Configurations
 
-## To run the application on your own Heroku account:##
+There are two configurations inside of Med Cellar, production and weak. Production will have all of the security fixes mentioned in the excercises, whereas the weak build will have none. In order to run the application in production mode use:
 
-1. Install the [Heroku Toolbelt](http://toolbelt.heroku.com)
+```js
+grunt build
+```
 
-2. [Sign up](http://heroku.com/signup) for a Heroku account
+To run the application with the weaknesses use:
 
-3. Login to Heroku from the `heroku` CLI:
+```js
+grunt buildweak
+```
 
-        $ heroku login
+#Building the Database
+Before you can use the app you will need to populate your mongo database using the following tasks:
 
-4. Create a new app on Heroku:
+To populate the users:
+```js
+grunt buildusers
+```
 
-        $ heroku create
+To populate the medications:
+```js
+grunt buildmeds
+```
 
-5. Add the [MongoLab Heroku Add-on](http://addons.heroku.com/mongolab)
-
-        $ heroku addons:add mongolab
-
-6. Upload the app to Heroku:
-
-        $ git push heroku master
-
-7. Open the app in your browser:
-
-        $ heroku open
+#Dropping the Database
+If you would like to drop the database automatically you may run
+```js
+grunt exec:dropdb
+```
 
