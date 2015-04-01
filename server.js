@@ -20,6 +20,9 @@ app.configure(function () {
     app.use(express.session({secret: 'applesandpears'}));
     if (config.environment === 'development'){
         app.use(helmet.hidePoweredBy());
+        app.use(helmet.noCache());
+        app.use(helmet.noSniff());
+        app.use(helmet.frameguard());
     }
     // Passport config
     app.use(passport.initialize());
