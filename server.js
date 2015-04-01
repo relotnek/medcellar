@@ -30,7 +30,7 @@ app.configure(function() {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.get('/get', user.login);
+app.get('/login', user.login);
 app.post('/login', user.login);
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);
