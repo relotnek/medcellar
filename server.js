@@ -2,14 +2,13 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     helmet = require('helmet'),
-    sanitizer = require('sanitizer');
-    passport = require('passport');
-    med = require('./routes/meds');
-    user = require('./routes/users');
+    sanitizer = require('sanitizer'),
+    passport = require('passport'),
+    med = require('./routes/meds'),
+    user = require('./routes/users'),
     config = require(process.env.MED_CONF);
 
 var app = express();
-
 
 app.configure(function() {
     app.set('port', process.env.PORT || 3000);
@@ -17,13 +16,12 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
-    if (config.environment === 'development'){
+    if (config.environment === 'development') {
         app.use(helmet.hidePoweredBy());
         app.use(helmet.noCache());
         app.use(helmet.noSniff());
         app.use(helmet.frameguard());
     }
-    // Passport config
     app.use(express.session({
         secret: 'applesandpears'
     }));
@@ -32,7 +30,7 @@ app.configure(function() {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-
+app.get('/get', user.login);
 app.post('/login', user.login);
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);
