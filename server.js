@@ -21,9 +21,6 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname,'public')));
 });
 
-// TODO - Externalize /populate* in Grunt:build with direct db calls
-app.get('/populate', user.dbBuild);
-app.get('/populatemd5', user.dbBuildMD5);
 app.post('/login', user.login );
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);

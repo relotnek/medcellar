@@ -82,18 +82,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
   });
 }));
 
-// TODO - Externalize in Grunt:build with direct db calls
-exports.dbBuild = function(req,res){
-  populateDB();
-  res.send(200);
-};
-
-// TODO - Externalize in Grunt:build with direct db calls
-exports.dbBuildMD5 = function(req,res){
-  populateDBMD5();
-  res.send(200);
-};
-
 exports.findAll = function(req,res){
   res.send({ user: req.user });
 };
@@ -116,38 +104,3 @@ exports.ensureAuth = function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/#login');
 };
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-// Populate database with sample data -- Only used once: the first time the application is started.
-// You'd typically not find this code in a real-life app, since the database would already exist.
-var populateDB = function() {
-    var user = new User({ username: 'ktoler', email: 'ktoler@ktoler.com', password: 'slapdabass'});
-    user.save(function(err){
-        if(err){
-            console.log(err);
-        } else {
-            console.log('user: ' + user.username + ' saved.');
-        }
-    });
-
-    var user2 = new User({ username: 'bob', email: 'bob@bob.com', password: 'nobass'});
-    user2.save(function(err){
-        if(err){
-            console.log(err);
-        } else {
-            console.log('user: ' + user.username + ' saved.');
-        }
-    });
-
-};
-
-var populateDBMD5 = function() {
-    var user = new User({ username: 'gellerb', email: 'gellerb@domain.com', password: 'coffee'});
-    user.save(function(err) {
-      if(err) {
-            console.log(err);
-        } else {
-            console.log('user: ' + user.username + ' saved.');
-        }
-    });
-}
