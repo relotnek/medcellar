@@ -1,9 +1,12 @@
 var express = require('express'),
     path = require('path'),
     http = require('http'),
+    helmet = require('helmet'),
+    sanitizer = require('sanitizer');
     passport = require('passport');
     med = require('./routes/meds');
     user = require('./routes/users');
+    config = require(process.env.MED_CONF);
 
 var app = express();
 
@@ -15,6 +18,9 @@ app.configure(function () {
     app.use(express.cookieParser());
     app.use(express.methodOverride());
     app.use(express.session({secret: 'applesandpears'}));
+    if (config.environment === 'development'){
+        app.use(helmet.hidePoweredBy());
+    }
     // Passport config
     app.use(passport.initialize());
     app.use(passport.session());
