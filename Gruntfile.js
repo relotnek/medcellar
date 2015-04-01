@@ -88,11 +88,23 @@ var meds = [{
 module.exports = function(grunt) {
     grunt.initConfig({
         exec: {
-            dropdb: 'mongo meddb --eval "db.dropDatabase()"'
+            dropdb: 'mongo meddb --eval "db.dropDatabase()"',
+            run: 'nodemon server.js'        },
+        env: {
+            dev: {
+                MED_CONF: './config/config.json'
+                },
+            weak:{
+                MED_CONF: './config/weakconfig.json'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-env');
+
+    grunt.registerTask('buildweak', ['env:weak','exec:run']);
+    grunt.registerTask('build', ['env:dev', 'exec:run']);
 
     grunt.registerTask('buildmeds', 'populate the database with meds', function() {
         var done = this.async();
