@@ -28,11 +28,7 @@ app.configure(function() {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
-    if (config.environment === 'development'){
-        app.use(express.static(path.join(__dirname, 'public')));
-    } else {
-        app.use(express.static(path.join(__dirname, 'weak-public')));
-    }
+    app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.get('/login', user.login);
