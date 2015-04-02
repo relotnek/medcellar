@@ -14,7 +14,7 @@
                         <label for="medId" class="control-label">Id:</label>
 
                         <div class="controls">
-                            <input id="medId" name="id" type="text" value="<%= _id === null ? '' : _id %>"
+                            <input id="medId" name="id" type="text" value="{{ _id }}"
                                    disabled/>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                         <label for="name" class="control-label">Name:</label>
 
                         <div class="controls">
-                            <input type="text" id="name" name="name" value="<%= name %>"/>
+                            <input type="text" id="name" name="name" value="{{ name }}"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                         <label for="classification" class="control-label">Classification:</label>
 
                         <div class="controls">
-                            <input type="text" id="classification" name="classification" value="<%= classification %>"/>
+                            <input type="text" id="classification" name="classification" value="{{ classification }}"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <label for="indication" class="control-label">Indication:</label>
 
                         <div class="controls">
-                            <input type="text" id="indication" name="indication" value="<%= indication %>"/>
+                            <input type="text" id="indication" name="indication" value="{{ indication }}"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <label for="supply" class="control-label">Supply:</label>
 
                         <div class="controls">
-                            <input type="text" id="supply" name="supply" value="<%= supply %>"/>
+                            <input type="text" id="supply" name="supply" value="{{ supply }}"/>
                             <span class="help-inline"></span>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <label for="price" class="control-label">Price:</label>
 
                         <div class="controls">
-                            <input type="text" id="price" name="price" value="<%= price %>"/>
+                            <input type="text" id="price" name="price" value="{{ price }}"/>
                         </div>
                     </div>
 
@@ -68,8 +68,8 @@
                         <label for="description" class="control-label">Description:</label>
 
                         <div class="controls">
-                            <textarea id="description" name="description" style="width: 90%;" rows="6"><%= description
-                                %></textarea>
+                            <textarea id="description" name="description" style="width: 90%;" rows="6">{{ description
+                                }}</textarea>
                         </div>
                     </div>
 
@@ -77,8 +77,8 @@
                         <label for="warnings" class="control-label">Warnings:</label>
 
                         <div class="controls">
-                            <textarea id="warnings" name="warnings" style="width: 90%;" rows="6"><%= warnings
-                                %></textarea>
+                            <textarea id="warnings" name="warnings" style="width: 90%;" rows="6">{{ warnings
+                                }}</textarea>
                         </div>
                     </div>
 
@@ -86,8 +86,8 @@
                         <label for="interactions" class="control-label">Interactions:</label>
 
                         <div class="controls">
-                            <textarea id="interactions" name="interactions" style="width: 90%;" rows="6"><%= interactions
-                                %></textarea>
+                            <textarea id="interactions" name="interactions" style="width: 90%;" rows="6">{{ interactions
+                                }}</textarea>
                         </div>
                     </div>
 
@@ -95,8 +95,8 @@
                         <label for="directions" class="control-label">Directions:</label>
 
                         <div class="controls">
-                            <textarea id="directions" name="directions" style="width: 90%;" rows="6"><%= directions
-                                %></textarea>
+                            <textarea id="directions" name="directions" style="width: 90%;" rows="6">{{ directions
+                                }}</textarea>
                         </div>
                     </div>
 
@@ -104,7 +104,7 @@
 
                 <div class="span4">
                     <div class="well" style="width: 180px;text-align: center;width:50%;margin: 0px auto;">
-                        <p><img id="picture" width="180" src="<%= picture === null ? 'pics/genbottle.jpg' : 'pics/' + picture %>"/></p>
+                        <p><img id="picture" width="180" src="pics/{{ picture }}"/></p>
                         <p style="color:#999;">To change the picture, drag a new picture from your file system onto the box above.</p>
                     </div>
                 </div>

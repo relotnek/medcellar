@@ -6,15 +6,18 @@ var _ = require('underscore');
 var users = [{
     username: 'ktoler',
     email: 'ken@medcellar.com',
-    password: 'slapdabass'
+    password: 'slapdabass',
+    role:'admin'
 }, {
     username: 'bob',
     email: 'bob@medcellar.com',
-    password: 'bobdole'
+    password: 'bobdole',
+    role:'admin'
 }, {
     username: 'gellerb',
     email: 'geller@medcellar.com',
-    password: 'magellan'
+    password: 'magellan',
+    role:'user'
 }, ];
 
 var meds = [{
@@ -27,7 +30,9 @@ var meds = [{
     warnings: "Head injury. Increased intracranial pressure. Acute abdominal conditions. Severe pulmonary, renal, hepatic, thyroid, or adrenocortical dysfunction. Asthma. GI or GU obstruction. Drug abusers. Elderly. Debilitated. Labor & delivery. Pregnancy (Cat.C). Nursing mothers.",
     interactions: "Potentiation with alcohol, other CNS depressants, MAOIs, tricyclic antidepressants, anticholinergics.",
     directions: "2.5mg/325mg: 1–2 tabs every 6hrs as needed. 5mg/325mg, 7.5mg/325mg, 10mg/325mg: 1 tab every 6hrs as needed. Max 4g acetaminophen/day.",
-    picture: "percocet.jpg"
+    picture: "percocet.jpg",
+    isPrescription:false
+
 }, {
     name: "Vicodin",
     classification: "Opioid + Analgesic",
@@ -38,7 +43,8 @@ var meds = [{
     warnings: "Risk of hepatotoxicity may result with acetaminophen doses >4g per day or involving more than one acetaminophen-containing product. Head injury. Increased intracranial pressure. Acute abdomen. Impaired renal, hepatic, thyroid, pulmonary, or adrenocortical function. GI or GU obstruction. Asthma. Post-op. Drug abusers. Elderly. Debilitated. Labor and delivery. Pregnancy (Cat.C). Nursing mothers: not recommended.",
     interactions: "Potentiation with alcohol, CNS depressants, MAOIs, tricyclic antidepressants, anticholinergics.",
     directions: "1–2 tabs every 4–6 hrs as needed; max 8 tabs/24 hrs",
-    picture: "vicodin.jpg"
+    picture: "vicodin.jpg",
+    isPrescription:false
 }, {
     name: "Advair HFA 45.21",
     classification: "Steroid + long-acting beta-2 agonist",
@@ -49,7 +55,8 @@ var meds = [{
     warnings: "Increased risk of asthma-related deaths and hospitalizations. Do not initiate in rapidly or acutely deteriorating asthma. Not for relief of acute bronchospasm. Not for use with other long-acting β2-agonists or for transferring from systemic steroids. Reevaluate periodically. Do not exceed recommended dose. Cardiovascular disease (esp. coronary insufficiency, arrhythmias, hypertension). Convulsive disorders. Thyrotoxicosis. Hyperresponsiveness to sympathomimetics. Diabetes. Ketoacidosis. Hypokalemia. Hyperglycemia. Hepatic impairment (monitor). Tuberculosis. Untreated infections. Ocular herpes simplex. Eosinophilic conditions. Immunosuppressed. If exposed to chickenpox or measles, consider anti-infective prophylactic therapy. If adrenal insufficiency exists following systemic corticosteroid therapy, replacement with inhaled corticosteroids may exacerbate symptoms of adrenal insufficiency (eg, lassitude). Prescribe a short-acting, inhaled β2-agonist for acute symptoms; monitor for increased need. Monitor potassium, intraocular pressure; bone mineral density if other osteoporosis risk factors exist; and for growth suppression in children; hypercorticism and HPA axis suppression (if occurs, discontinue gradually). Labor & delivery. Pregnancy (Cat.C). Nursing mothers: not recommended. Pregnancy (Cat.C). Nursing mothers: not recommended.",
     interactions: "See Contraindications. Concomitant strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole, ritonavir, atazanavir, clarithromycin, indinavir, nefazodone, nelfinavir, saquinavir, telithromycin): not recommended. Caution with other sympathomimetics (except short-acting bronchodilators), during or within 2 weeks of MAOIs, tricyclic antidepressants (increased cardiac effects), K+-depleting diuretics. Antagonized by β-blockers.",
     directions: "See literature. 2 inh twice daily (AM & PM; approx. 12hrs apart). If insufficient response after 2wks, use next higher strength. Max: 2 inh of Advair HFA 230/21 twice daily.",
-    picture: "advair.jpg"
+    picture: "advair.jpg",
+    isPrescription:false
 }, {
     name: "Viagra",
     classification: "Phosphodiesterase type 5 inhibitor (cGMP-specific)",
@@ -60,7 +67,8 @@ var meds = [{
     warnings: "Confirm diagnosis. Cardiovascular disease (eg, MI, stroke, or life-threatening arrhythmia within 6 months; BP<90/50 or >170/110; unstable angina, LV outflow obstruction, impaired autonomic regulation of BP). Anatomical penile deformation. Predisposition to priapism. Underlying non-arteritic anterior ischemic optic neuropathy risk factors. Advise patients to discontinue if sudden vision or hearing loss occurs. Retinitis pigmentosa. Patients for whom sexual activity is inadvisable or contraindicated. Bleeding disorders. Active peptic ulcer. Pregnancy (Cat.B).",
     interactions: "Hypotension with nitrates: see Contraindications. Concomitant α-blockers (eg, doxazosin) may lead to symptomatic hypotension. Additive effects with concomitant antihypertensives (eg, amlodipine). Plasma levels increased by inhibitors of CYP3A4 (eg, ketoconazole, itraconazole, erythromycin, saquinavir, ritonavir) or CYP2C9, or cimetidine. Plasma levels reduced by inducers of CYP3A4 (eg, rifampin). Concomitant other erectile dysfunction treatments: not recommended",
     directions: "Take 1 dose as needed about 1 hr (½–4 hrs) before sexual activity at frequency of up to once daily. Initially 50mg. May reduce dose to 25mg or increase to max of 100mg. Elderly, hepatic impairment, severe renal impairment, or concomitant potent CYP3A4 inhibitors (eg, erythromycin, ketoconazole, itraconazole, saquinavir): consider initial dose of 25mg. Concomitant ritonavir: max single sildenafil dose of 25mg in 48hrs. Concomitant α-blockers (patients should be stable on α-blocker therapy before starting): initially 25mg.",
-    picture: "viagra.jpg"
+    picture: "viagra.jpg",
+    isPrescription:true
 }, {
     name: "Mucinex",
     classification: "Expectorant",
@@ -71,7 +79,8 @@ var meds = [{
     warnings: "Asthma. Lower respiratory disorders. Pregnancy. Nursing mothers. Mini-Melts: Renal disease. Magnesium-restricted diet.",
     interactions: "Concomitant live vaccines, biologic DMARDs or potent immunosuppressants (eg, azathioprine, cyclosporine): not recommended. Potentiated by potent CYP3A4 inhibitors (eg, ketoconazole), or drugs that result in both moderate CYP3A4 and potent CYP2C19 (eg, fluconazole) inhibition. Antagonized by potent CYP3A4 inducers (eg, rifampin); see Adults.",
     directions: "Swallow whole. 1–2 tabs every 12 hours. Max: 4 tabs/day",
-    picture: "mucinex.jpg"
+    picture: "mucinex.jpg",
+    isPrescription:true
 }, {
     name: "FIORICET w. CODEINE",
     classification: "Opioid + barbiturate + analgesic/antipyretic + CNS stimulant",
@@ -82,7 +91,8 @@ var meds = [{
     warnings: "Hepatotoxicity (acetaminophen >4g/day). Drug abusers. Impaired hepatic or renal function (monitor). Acute abdominal conditions. Elderly. Debilitated. Pregnancy (Cat.C). Nursing mothers: not recommended. Also with Codeine: risk of respiratory depression and death related to ultra-rapid metabolizers of codeine (esp. in children in post-op tonsillectomy and/or adenoidectomy). Obstructive sleep apnea. Head injury. Increased intracranial pressure. Hypothyroidism. Addison’s disease. GI or GU obstruction. Abuse potential. Labor and delivery.",
     interactions: "May be potentiated by MAOIs. May potentiate alcohol, general anesthetics, tranquilizers, sedative-hypnotics, other narcotic analgesics or CNS depressants. Induction of drug-metabolizing hepatic enzymes. Acetaminophen may cause false (+) urine test for 5-hydroxyindoleacetic acid. Codeine may increase serum amylase levels.",
     directions: "1–2 caps every 4hrs; max 6/da",
-    picture: "fiorcetcodeine.jpg"
+    picture: "fiorcetcodeine.jpg",
+    isPrescription:true
 }, ];
 
 
@@ -135,8 +145,9 @@ module.exports = function(grunt) {
                 warnings: insertion.warnings,
                 interactions: insertion.interactions,
                 directions: insertion.directions,
-                picture: insertion.picture
-            });
+                picture: insertion.picture,
+                isPrescription: insertion.isPrescription
+                });
             console.log(med);
             med.save(function(err) {
                 if (err) {
@@ -156,14 +167,15 @@ module.exports = function(grunt) {
                 username: insertion.username,
                 email: insertion.email,
                 password: insertion.password,
-                hashDigest: hashDigest
+                hashDigest: hashDigest,
+                role: insertion.role
             });
             console.log(user);
             user.save(function(err) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("User: " + user.username + " Saved.");
+                    console.log("User: " + user.username + "with role:" + user.role+" Saved.");
                 }
                 done();
             });
