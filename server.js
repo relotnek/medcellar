@@ -25,6 +25,13 @@ app.configure(function() {
     app.use(express.session({
         secret: 'applesandpears'
     }));
+    // CSRF
+    app.use(express.csrf());
+    app.use(function(req, res, next){
+        res.locals.token = req.session._csrf;
+        next();
+    });
+    // ADD meta(name="csrf-token", content="#{token}")
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(path.join(__dirname, 'public')));
