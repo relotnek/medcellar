@@ -127,8 +127,8 @@ module.exports = function(grunt) {
     grunt.registerTask('buildweak', ['builddb:md5']);
     grunt.registerTask('build', ['builddb:bcrypt']);
 
-    grunt.registerTask('deployweak', ['env:weak', 'exec:run']);
-    grunt.registerTask('deploy', ['env:dev', 'exec:run']);
+    grunt.registerTask('deployweak', ['exec:dropdb','builddb:md5','env:weak', 'exec:run']);
+    grunt.registerTask('deploy', ['exec:dropdb','builddb:bcrypt','env:dev', 'exec:run']);
 
     grunt.registerTask('tasks', ['availabletasks']);
 
@@ -173,9 +173,9 @@ module.exports = function(grunt) {
                 } else {
                     console.log("User: " + user.username + "with role:" + user.role+" Saved.");
                 }
-                done();
             });
         });
+        done();
     });
 
 };
