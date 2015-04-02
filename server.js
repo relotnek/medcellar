@@ -11,20 +11,18 @@ var express = require('express'),
 
 var app = express();
 
-
 app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
-    if (config.environment === 'development'){
+    if (config.environment === 'development') {
         app.use(helmet.hidePoweredBy());
         app.use(helmet.noCache());
         app.use(helmet.noSniff());
         app.use(helmet.frameguard());
     }
-    // Passport config
     app.use(express.session({
         secret: 'applesandpears'
     }));
