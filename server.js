@@ -6,8 +6,7 @@ var express = require('express'),
     passport = require('passport'),
     med = require('./routes/meds'),
     user = require('./routes/users'),
-    config = require(process.env.MED_CONF),
-    console.log(process.env.MED_CONF);
+    config = require(process.env.MED_CONF);
 
 
 var app = express();
