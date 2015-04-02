@@ -1,5 +1,5 @@
 {
     "environment": "development",
-    "middleware": "helmet",
+    "middleware": "lusca",
     "hashDigest": "bcrypt"
 }

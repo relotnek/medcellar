@@ -18,6 +18,12 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
+    app.use(express.session({
+        secret: 'applesandpears',
+        cookie : {
+    maxAge: 3600000 // see below
+  }
+    }));
     // Helmet.js Configuration
     if (config.middleware === 'helmet') {
         app.use(helmet.hidePoweredBy());
@@ -33,9 +39,6 @@ app.configure(function() {
             xssProtection: true
         }));
     }
-    app.use(express.session({
-        secret: 'applesandpears'
-    }));
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(path.join(__dirname, 'public')));
