@@ -7,6 +7,7 @@ var express = require('express'),
     med = require('./routes/meds'),
     user = require('./routes/users'),
     config = require(process.env.MED_CONF);
+    console.log(process.env.MED_CONF);
 
 
 var app = express();
