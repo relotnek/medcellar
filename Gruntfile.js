@@ -90,6 +90,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         exec: {
             dropdb: 'mongo meddb --eval "db.dropDatabase()"',
+            dropuser: 'mongo meddb --eval "db.users.drop()"',
             run: 'nodemon server.js'
             },
         env: {
@@ -105,9 +106,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-env');
 
-    grunt.registerTask('buildweak', ['env:weak','exec:run']);
-    grunt.registerTask('build', ['env:dev', 'exec:run']);
+    grunt.registerTask('buildstorageweak', ['buildusers:md5']);
+    grunt.registerTask('buildstorage', ['buildusers:bcrypt']);
 
+    grunt.registerTask('buildweak', ['buildusers:md5', 'buildmeds']);
+    grunt.registerTask('build', ['buildusers:bcrypt', 'buildmeds']);
+
+    grunt.registerTask('buildweak', ['env:weak', 'exec:run']);
+    grunt.registerTask('build', ['env:dev', 'exec:run']);
 
 
     grunt.registerTask('buildmeds', 'populate the database with meds', function() {
@@ -137,13 +143,14 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerTask('buildusers', 'populate the database with meds', function() {
+    grunt.registerTask('buildusers', 'populate the database with users', function(hashDigest) {
         var done = this.async();
         _.each(users, function(insertion) {
             var user = new db.user({
                 username: insertion.username,
                 email: insertion.email,
-                password: insertion.password
+                password: insertion.password,
+                hashDigest: hashDigest
             });
             console.log(user);
             user.save(function(err) {
@@ -156,5 +163,5 @@ module.exports = function(grunt) {
             });
         });
     });
-    
+
 };
