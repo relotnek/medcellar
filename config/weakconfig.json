@@ -1,4 +1,5 @@
 {
-	"environment":"weak"
-	"middleware":"none"
+    "environment": "weak",
+    "middleware": "none",
+    "hashDigest" : "bcrypt"
 }

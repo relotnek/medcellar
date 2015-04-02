@@ -1,4 +1,5 @@
 {
-	"environment":"development",
-	"middleware":"helmet"
+    "environment": "development",
+    "middleware": "helmet",
+    "hashDigest": "md5"
 }
