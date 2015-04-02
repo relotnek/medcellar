@@ -2,6 +2,7 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     helmet = require('helmet'),
+    lusca = require('lusca'),
     sanitizer = require('sanitizer'),
     passport = require('passport'),
     med = require('./routes/meds'),
@@ -16,22 +17,28 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
-    if (config.environment === 'development') {
+    app.use(express.session({
+        secret: 'applesandpears',
+        cookie : {
+    maxAge: 3600000 // see below
+  }
+    }));
+    // Helmet.js Configuration
+    if (config.middleware === 'helmet') {
         app.use(helmet.hidePoweredBy());
         app.use(helmet.noCache());
         app.use(helmet.noSniff());
         app.use(helmet.frameguard());
+    //Lusca.js Configuration
+    } else if (config.middleware === 'lusca') {
+        app.use(lusca({
+            csrf: true,
+            xframe: 'SAMEORIGIN',
+            p3p: 'ABCDEF',
+            xssProtection: true
+        }));
     }
-    app.use(express.session({
-        secret: 'applesandpears'
-    }));
-    // CSRF
-    app.use(express.csrf());
-    app.use(function(req, res, next){
-        res.locals.token = req.session._csrf;
-        next();
-    });
-    // ADD meta(name="csrf-token", content="#{token}")
+
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(path.join(__dirname, 'public')));
