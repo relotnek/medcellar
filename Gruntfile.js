@@ -100,21 +100,27 @@ module.exports = function(grunt) {
             weak:{
                 MED_CONF: path.resolve('./config/weakconfig.json')
             }
+        },
+        availabletasks: {
+            tasks: {}
         }
     });
 
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-env');
+    grunt.loadNpmTasks('grunt-available-tasks');
 
-    grunt.registerTask('buildstorageweak', ['buildusers:md5']);
-    grunt.registerTask('buildstorage', ['buildusers:bcrypt']);
+//    grunt.registerTask('buildstorageweak', ['buildusers:md5']);
+//    grunt.registerTask('buildstorage', ['buildusers:bcrypt']);
 
-    grunt.registerTask('buildweak', ['buildusers:md5', 'buildmeds']);
-    grunt.registerTask('build', ['buildusers:bcrypt', 'buildmeds']);
+    //builds twice because once isn't enough
+    grunt.registerTask('buildweak', ['buildusers:md5', 'buildmeds','buildusers:md5', 'buildmeds']);
+    grunt.registerTask('build', ['buildusers:bcrypt', 'buildmeds','buildusers:bcrypt', 'buildmeds']);
 
     grunt.registerTask('deployweak', ['env:weak', 'exec:run']);
     grunt.registerTask('deploy', ['env:dev', 'exec:run']);
 
+    grunt.registerTask('tasks', ['availabletasks']);
 
     grunt.registerTask('buildmeds', 'populate the database with meds', function() {
         var done = this.async();
@@ -143,7 +149,7 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerTask('buildusers', 'populate the database with users', function(hashDigest) {
+    grunt.registerTask('buildusers', 'populate the database with users. buildusers:md5 | buildusers:bcrypt', function(hashDigest) {
         var done = this.async();
         _.each(users, function(insertion) {
             var user = new db.user({

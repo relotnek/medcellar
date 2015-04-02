@@ -31,7 +31,9 @@ app.configure(function() {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.get('/login', user.login);
+app.get('/login', function(req,res){
+    res.redirect('/#login');
+});
 app.post('/login', user.login);
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);
