@@ -1,5 +1,5 @@
 {
     "environment": "weak",
     "middleware": "none",
-    "hashDigest" : "bcrypt"
+    "hashDigest" : "md5"
 }
