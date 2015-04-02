@@ -37,6 +37,11 @@ var userSchema = mongoose.Schema({
     workFactor: {
         type: Number,
         required: false
+    },
+    role:{
+        type: String,
+        required: true,
+        unique: true
     }
 });
 
@@ -117,7 +122,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
         user.comparePassword(password, function(err, isMatch) {
             if (err) return done(err);
             if (isMatch) {
-                return done(null, user);
+               return done(null, user);
             } else {
                 return done(null, false, {
                     message: 'Invalid password'
