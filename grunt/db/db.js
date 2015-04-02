@@ -53,30 +53,28 @@ var medSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', function(next) {
-    // TODO - Add ability to switch betwen MD5 & BCrypt for password storage
+  var user = this;
 
-    var user = this;
+  if (user.hashDigest.toLowerCase() === 'md5') {
+      try {
+          user.password = crypto.MD5(user.password).toString();
+          next();
+      } catch (ex) {
+          next(ex);
+      }
+  }
 
-    if (user.hashDigest.toLowerCase() === 'md5') {
-        try {
-            user.password = crypto.MD5(user.password).toString();
-            next();
-        } catch (ex) {
-            next(ex);
-        }
-    }
+  if (user.hashDigest.toLowerCase() === 'bcrypt') {
+      bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+          if (err) return next(err);
 
-    if (user.hashDigest.toLowerCase() === 'bcrypt') {
-        bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-            if (err) return next(err);
-
-            bcrypt.hash(user.password, salt, function(err, hash) {
-                if (err) return next(err);
-                user.password = hash;
-                next();
-            });
-        });
-    }
+          bcrypt.hash(user.password, salt, function(err, hash) {
+              if (err) return next(err);
+              user.password = hash;
+              next();
+          });
+      });
+  }
 });
 
 
