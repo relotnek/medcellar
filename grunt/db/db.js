@@ -35,6 +35,11 @@ var userSchema = mongoose.Schema({
     workFactor: {
         type: Number,
         required: false
+    },
+    role:{
+      type:String,
+      required:true,
+      unique:true
     }
 });
 
@@ -49,7 +54,8 @@ var medSchema = mongoose.Schema({
   warnings: { type: String, required: false, unique: false},
   interactions: { type: String, required: false, unique: false},
   directions: { type: String, required: false, unique: false},
-  picture: { type: String, required: false, unique: false}
+  picture: { type: String, required: false, unique: false},
+  isPrescription:{type:Boolean, required: true,unique:true}
 });
 
 userSchema.pre('save', function(next) {

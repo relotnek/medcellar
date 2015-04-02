@@ -32,11 +32,21 @@ exports.findById = function(req, res) {
 };
 
 exports.findAll = function(req, res) {
-    db.collection('meds', function(err, collection) {
-        collection.find().toArray(function(err, items) {
-            res.send(items);
+    if(req.user['role']=='admin'){
+        db.collection('meds', function(err, collection) {
+            collection.find().toArray(function(err, items) {
+                res.send(items);
+            });
         });
-    });
+    }else if(req.user['role'] == 'user'){
+        db.collection('meds',function(err,collection){
+            collection.find({'isPrescription':false}).toArray(function(err, items) {
+                res.send(items);
+            });
+        });
+    }else{
+        res.status(200).send("No Items Found");
+    }     
 };
 
 exports.addMed = function(req, res) {
