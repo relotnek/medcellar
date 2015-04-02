@@ -40,6 +40,10 @@ app.get('/meds/:id', user.ensureAuth, med.findById);
 app.post('/meds', user.ensureAuth, med.addMed);
 app.put('/meds/:id', user.ensureAuth, med.updateMed);
 app.delete('/meds/:id', user.ensureAuth, med.deleteMed);
+app.get('/logout',function(req,res){
+    req.logout();
+    res.redirect('/');
+});
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));
