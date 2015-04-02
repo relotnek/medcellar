@@ -90,7 +90,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         exec: {
             dropdb: 'mongo meddb --eval "db.dropDatabase()"',
-            dropuser: 'mongo meddb --eval "db.users.drop()"',
+            dropusers: 'mongo meddb --eval "db.users.drop()"',
             run: 'nodemon server.js'
             },
         env: {
@@ -112,8 +112,8 @@ module.exports = function(grunt) {
     grunt.registerTask('buildweak', ['buildusers:md5', 'buildmeds']);
     grunt.registerTask('build', ['buildusers:bcrypt', 'buildmeds']);
 
-    grunt.registerTask('buildweak', ['env:weak', 'exec:run']);
-    grunt.registerTask('build', ['env:dev', 'exec:run']);
+    grunt.registerTask('deployweak', ['env:weak', 'exec:run']);
+    grunt.registerTask('deploy', ['env:dev', 'exec:run']);
 
 
     grunt.registerTask('buildmeds', 'populate the database with meds', function() {
