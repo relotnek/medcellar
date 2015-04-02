@@ -81,7 +81,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
         }
     }
 
-    if (user.hashDigest.toLowerCase() === 'bcrypt') {
+    if (config.hashDigest.toLowerCase() === 'bcrypt') {
         bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
             if (err) return cb(err);
             cb(null, isMatch);
