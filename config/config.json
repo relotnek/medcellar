@@ -1,4 +1,3 @@
 {
-	"environment":"development",
-	"middleware":"helmet"
+	"environment":"development"
 }

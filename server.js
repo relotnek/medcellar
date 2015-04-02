@@ -29,7 +29,11 @@ app.configure(function() {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
-    app.use(express.static(path.join(__dirname, 'public')));
+    if (config.environment === 'development'){
+        app.use(express.static(path.join(__dirname, 'public')));
+    } else {
+        app.use(express.static(path.join(__dirname, 'weak-public')));
+    }
 });
 
 app.get('/login', user.login);

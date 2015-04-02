@@ -4,6 +4,7 @@ var crypto = require('crypto-js');
 var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var config = require(process.env.MED_CONF);
 var SALT_WORK_FACTOR = 10;
 
 mongoose.connect('localhost','meddb');
