@@ -1,5 +1,6 @@
 var mongo = require('mongodb');
 var sanitizer = require('sanitizer');
+var config = require(process.env.MED_CONF);
 
 var Server = mongo.Server,
     Db = mongo.Db,

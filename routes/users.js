@@ -7,6 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var config = require(process.env.MED_CONF);
 var SALT_WORK_FACTOR = 1;
 
+
 mongoose.connect('localhost', 'meddb');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
