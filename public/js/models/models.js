@@ -43,7 +43,7 @@ window.Med = Backbone.Model.extend({
         name: "No Name",
         classification: "Unclassified",
         description: "",
-        picture: null,
+        picture: "genbottle.jpg",
         indication: "No Indications",
         directions: "No Directions",
         warnings: "No Warnings",

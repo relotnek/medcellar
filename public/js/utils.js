@@ -8,7 +8,7 @@ window.utils = {
         $.each(views, function(index, view) {
             if (window[view]) {
                 deferreds.push($.get('tpl/' + view + '.html', function(data) {
-                    window[view].prototype.template = _.template(data);
+                    window[view].prototype.template = Handlebars.compile(data);
                 }));
             } else {
                 alert(view + " not found");
