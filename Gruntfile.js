@@ -124,15 +124,15 @@ module.exports = function(grunt) {
 //    grunt.registerTask('buildstorage', ['buildusers:bcrypt']);
 
     //builds twice because once isn't enough
-    grunt.registerTask('buildweak', ['buildusers:md5', 'buildmeds','buildusers:md5', 'buildmeds']);
-    grunt.registerTask('build', ['buildusers:bcrypt', 'buildmeds','buildusers:bcrypt', 'buildmeds']);
+    grunt.registerTask('buildweak', ['builddb:md5']);
+    grunt.registerTask('build', ['builddb:bcrypt']);
 
     grunt.registerTask('deployweak', ['env:weak', 'exec:run']);
     grunt.registerTask('deploy', ['env:dev', 'exec:run']);
 
     grunt.registerTask('tasks', ['availabletasks']);
 
-    grunt.registerTask('buildmeds', 'populate the database with meds', function() {
+    grunt.registerTask('builddb', 'populate the database with medications.', function(hashDigest) {
         var done = this.async();
         _.each(meds, function(insertion) {
             var med = new db.med({
@@ -155,13 +155,9 @@ module.exports = function(grunt) {
                 } else {
                     console.log("Med: " + med.name + " Saved.");
                 }
-                done();
             });
         });
-    });
 
-    grunt.registerTask('buildusers', 'populate the database with users. buildusers:md5 | buildusers:bcrypt', function(hashDigest) {
-        var done = this.async();
         _.each(users, function(insertion) {
             var user = new db.user({
                 username: insertion.username,
