@@ -28,7 +28,6 @@ app.configure(function() {
         app.use(lusca({
             csrf: true,
             xframe: 'SAMEORIGIN',
-            p3p: 'ABCDEF',
             xssProtection: true
         }));
     }

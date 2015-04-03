@@ -9,7 +9,8 @@ var Server = mongo.Server,
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('meddb', server, {safe: true});
 
-db.open(function(err, db) {
+/*
+ db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'meddb' database");
         db.collection('meds', {safe:true}, function(err, collection) {
@@ -20,6 +21,7 @@ db.open(function(err, db) {
         });
     }
 });
+*/
 
 exports.findById = function(req, res) {
     var id = req.params.id;
@@ -46,7 +48,7 @@ exports.findAll = function(req, res) {
         });
     }else{
         res.status(200).send("No Items Found");
-    }     
+    }
 };
 
 exports.addMed = function(req, res) {
@@ -106,6 +108,7 @@ exports.deleteMed = function(req, res) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.
 // You'd typically not find this code in a real-life app, since the database would already exist.
+/*
 var populateDB = function() {
 
     var meds = [
@@ -188,3 +191,4 @@ var populateDB = function() {
     });
 
 };
+*/
