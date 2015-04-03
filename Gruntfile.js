@@ -120,9 +120,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-available-tasks');
 
-//    grunt.registerTask('buildstorageweak', ['buildusers:md5']);
-//    grunt.registerTask('buildstorage', ['buildusers:bcrypt']);
-
     //builds twice because once isn't enough
     grunt.registerTask('buildweak', ['builddb:md5']);
     grunt.registerTask('build', ['builddb:bcrypt']);
@@ -132,7 +129,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('tasks', ['availabletasks']);
 
-    grunt.registerTask('builddb', 'populate the database with medications.', function(hashDigest) {
+    grunt.registerTask('builddb', 'populate the database with medications & users', function(hashDigest) {
         var done = this.async();
         _.each(meds, function(insertion) {
             var med = new db.med({
