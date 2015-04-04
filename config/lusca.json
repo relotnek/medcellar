@@ -1,5 +1,6 @@
 {
     "environment": "development",
     "middleware": "lusca",
-    "hashDigest": "bcrypt"
+    "hashDigest": "bcrypt",
+    "transportsecurity": false
 }

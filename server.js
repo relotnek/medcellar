@@ -55,21 +55,19 @@ app.post('/meds', user.ensureAuth, med.addMed);
 app.put('/meds/:id', user.ensureAuth, med.updateMed);
 app.delete('/meds/:id', user.ensureAuth, med.deleteMed);
 
-// if TLS enabled
-if (true) {
+if (config.transportsecurity) {
     // key: nodecellar
     var options = {
         key: fs.readFileSync('config/ssl/key.pem'),
         cert: fs.readFileSync('config/ssl/cert.pem')
-        //ca: fs.readFileSync('config/ssl/ca.crt')
     };
+    https.createServer(options, app).listen(443);
 }
-server = https.createServer(options, app);
-server.listen(443)
-/*
-http.createServer(app).listen(
-    app.get('port'),
-    function() {
-        console.log("Express server listening on port " + app.get('port'));
-    });
-*/
+
+if (!config.transportsecurity) {
+    http.createServer(app).listen(
+        app.get('port'),
+        function() {
+            console.log("Express server listening on port " + app.get('port'));
+        });
+}
