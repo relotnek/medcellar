@@ -120,11 +120,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-available-tasks');
 
-    //builds twice because once isn't enough
-    grunt.registerTask('buildweak', ['builddb:md5']);
-    grunt.registerTask('build', ['builddb:bcrypt']);
-
     grunt.registerTask('deployweak', ['exec:dropdb','builddb:md5','env:weak', 'exec:run']);
+
     grunt.registerTask('deploy', ['exec:dropdb','builddb:bcrypt','env:dev', 'exec:run']);
 
     grunt.registerTask('tasks', ['availabletasks']);

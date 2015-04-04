@@ -7,6 +7,8 @@ var express = require('express'),
     passport = require('passport'),
     med = require('./routes/meds'),
     user = require('./routes/users'),
+    https = require('https'),
+    fs = require('fs'),
     config = require(process.env.MED_CONF);
 
 var app = express();
@@ -17,13 +19,13 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
-    // Helmet.js Configuration
+    // helmet.js configuration
     if (config.middleware === 'helmet') {
         app.use(helmet.hidePoweredBy());
         app.use(helmet.noCache());
         app.use(helmet.noSniff());
         app.use(helmet.frameguard());
-    //Lusca.js Configuration
+    // lusca.js configuration
     } else if (config.middleware === 'lusca') {
         app.use(lusca({
             csrf: true,
@@ -53,7 +55,21 @@ app.post('/meds', user.ensureAuth, med.addMed);
 app.put('/meds/:id', user.ensureAuth, med.updateMed);
 app.delete('/meds/:id', user.ensureAuth, med.deleteMed);
 
-
-http.createServer(app).listen(app.get('port'), function() {
-    console.log("Express server listening on port " + app.get('port'));
-});
+// if TLS enabled
+if (true) {
+    // key: nodecellar
+    var options = {
+        key: fs.readFileSync('config/ssl/key.pem'),
+        cert: fs.readFileSync('config/ssl/cert.pem')
+        //ca: fs.readFileSync('config/ssl/ca.crt')
+    };
+}
+server = https.createServer(options, app);
+server.listen(443)
+/*
+http.createServer(app).listen(
+    app.get('port'),
+    function() {
+        console.log("Express server listening on port " + app.get('port'));
+    });
+*/
