@@ -18,8 +18,8 @@
     "socket.io": "0.9.10"
   },
   "engines": {
-    "node": "0.8.4",
-    "npm": "1.1.49"
+    "node": "0.12.1",
+    "npm": "2.7.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
