@@ -3,3 +3,4 @@
 db/
 Procfile
 .gitignore
+access.log
