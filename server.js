@@ -9,6 +9,8 @@ var express = require('express'),
     user = require('./routes/users'),
     https = require('https'),
     fs = require('fs'),
+    compression = require('compression'),
+    minify = require('express-minify'),
     config = require(process.env.MED_CONF);
 
 var app = express();
@@ -20,6 +22,8 @@ var accessLogStream = fs.createWriteStream(config.accessLog, {
 app.configure(function() {
     app.set('port', process.env.PORT || 3000);
     app.use(express.logger({stream: accessLogStream}));
+    app.use(compression());
+    app.use(minify());
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
