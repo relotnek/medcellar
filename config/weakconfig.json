@@ -2,6 +2,7 @@
     "environment": "weak",
     "middleware": "none",
     "hashDigest" : "md5",
-    "transportsecurity": false
+    "transportsecurity": false,
+    "accessLog": "access.log"
 }
 

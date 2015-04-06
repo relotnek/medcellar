@@ -2,5 +2,6 @@
     "environment": "development",
     "middleware": "lusca",
     "hashDigest": "bcrypt",
-    "transportsecurity": false
+    "transportsecurity": false,
+    "accessLog": "access.log"
 }

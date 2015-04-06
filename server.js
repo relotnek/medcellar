@@ -13,9 +13,13 @@ var express = require('express'),
 
 var app = express();
 
+var accessLogStream = fs.createWriteStream(config.accessLog, {
+    flags: 'a'
+});
+
 app.configure(function() {
     app.set('port', process.env.PORT || 3000);
-    app.use(express.logger('dev'));
+    app.use(express.logger({stream: accessLogStream}));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
@@ -33,7 +37,7 @@ app.configure(function() {
             xssProtection: true
         }));
     }
-    if (config.transportsecurity) {
+    if (config.transportSecurity) {
         app.use(lusca({
             hsts: {maxAge: 31536000, includeSubDomains: true}
         }));
@@ -60,7 +64,7 @@ app.post('/meds', user.ensureAuth, med.addMed);
 app.put('/meds/:id', user.ensureAuth, med.updateMed);
 app.delete('/meds/:id', user.ensureAuth, med.deleteMed);
 
-if (config.transportsecurity) {
+if (config.transportSecurity) {
     // key: nodecellar
     var options = {
         key: fs.readFileSync('config/ssl/key.pem'),
