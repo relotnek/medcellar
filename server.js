@@ -33,9 +33,11 @@ app.configure(function() {
             xssProtection: true
         }));
     }
-    app.use(lusca({
-        hsts: {maxAge: 31536000, includeSubDomains: true}
-    }));
+    if (config.transportsecurity) {
+        app.use(lusca({
+            hsts: {maxAge: 31536000, includeSubDomains: true}
+        }));
+    }
     app.use(express.session({
         secret: 'applesandpears'
     }));
