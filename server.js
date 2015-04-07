@@ -77,7 +77,7 @@ if (config.transportSecurity) {
     https.createServer(options, app).listen(443);
 }
 
-if (!config.transportsecurity) {
+if (!config.transportSecurity) {
     http.createServer(app).listen(
         app.get('port'),
         function() {
