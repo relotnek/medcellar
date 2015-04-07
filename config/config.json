@@ -2,6 +2,6 @@
     "environment": "development",
     "middleware": "helmet",
     "hashDigest": "bcrypt",
-    "transportSecurity": false,
+    "transportSecurity": true,
     "accessLog": "access.log"
 }
