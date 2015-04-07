@@ -32,7 +32,7 @@ var meds = [{
     interactions: "Potentiation with alcohol, other CNS depressants, MAOIs, tricyclic antidepressants, anticholinergics.",
     directions: "2.5mg/325mg: 1–2 tabs every 6hrs as needed. 5mg/325mg, 7.5mg/325mg, 10mg/325mg: 1 tab every 6hrs as needed. Max 4g acetaminophen/day.",
     picture: "percocet.jpg",
-    isPrescription: false
+    isPrescription: true
 
 }, {
     name: "Vicodin",
@@ -45,7 +45,7 @@ var meds = [{
     interactions: "Potentiation with alcohol, CNS depressants, MAOIs, tricyclic antidepressants, anticholinergics.",
     directions: "1–2 tabs every 4–6 hrs as needed; max 8 tabs/24 hrs",
     picture: "vicodin.jpg",
-    isPrescription: false
+    isPrescription: true
 }, {
     name: "Advair HFA 45.21",
     classification: "Steroid + long-acting beta-2 agonist",
@@ -57,7 +57,7 @@ var meds = [{
     interactions: "See Contraindications. Concomitant strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole, ritonavir, atazanavir, clarithromycin, indinavir, nefazodone, nelfinavir, saquinavir, telithromycin): not recommended. Caution with other sympathomimetics (except short-acting bronchodilators), during or within 2 weeks of MAOIs, tricyclic antidepressants (increased cardiac effects), K+-depleting diuretics. Antagonized by β-blockers.",
     directions: "See literature. 2 inh twice daily (AM & PM; approx. 12hrs apart). If insufficient response after 2wks, use next higher strength. Max: 2 inh of Advair HFA 230/21 twice daily.",
     picture: "advair.jpg",
-    isPrescription: false
+    isPrescription: true
 }, {
     name: "Viagra",
     classification: "Phosphodiesterase type 5 inhibitor (cGMP-specific)",
