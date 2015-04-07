@@ -31,7 +31,7 @@ var meds = [{
     interactions: "Potentiation with alcohol, other CNS depressants, MAOIs, tricyclic antidepressants, anticholinergics.",
     directions: "2.5mg/325mg: 1–2 tabs every 6hrs as needed. 5mg/325mg, 7.5mg/325mg, 10mg/325mg: 1 tab every 6hrs as needed. Max 4g acetaminophen/day.",
     picture: "percocet.jpg",
-    isPrescription:false
+    isPrescription: false
 
 }, {
     name: "Vicodin",
@@ -44,7 +44,7 @@ var meds = [{
     interactions: "Potentiation with alcohol, CNS depressants, MAOIs, tricyclic antidepressants, anticholinergics.",
     directions: "1–2 tabs every 4–6 hrs as needed; max 8 tabs/24 hrs",
     picture: "vicodin.jpg",
-    isPrescription:false
+    isPrescription: false
 }, {
     name: "Advair HFA 45.21",
     classification: "Steroid + long-acting beta-2 agonist",
@@ -56,7 +56,7 @@ var meds = [{
     interactions: "See Contraindications. Concomitant strong CYP3A4 inhibitors (eg, ketoconazole, itraconazole, ritonavir, atazanavir, clarithromycin, indinavir, nefazodone, nelfinavir, saquinavir, telithromycin): not recommended. Caution with other sympathomimetics (except short-acting bronchodilators), during or within 2 weeks of MAOIs, tricyclic antidepressants (increased cardiac effects), K+-depleting diuretics. Antagonized by β-blockers.",
     directions: "See literature. 2 inh twice daily (AM & PM; approx. 12hrs apart). If insufficient response after 2wks, use next higher strength. Max: 2 inh of Advair HFA 230/21 twice daily.",
     picture: "advair.jpg",
-    isPrescription:false
+    isPrescription: false
 }, {
     name: "Viagra",
     classification: "Phosphodiesterase type 5 inhibitor (cGMP-specific)",
@@ -68,7 +68,7 @@ var meds = [{
     interactions: "Hypotension with nitrates: see Contraindications. Concomitant α-blockers (eg, doxazosin) may lead to symptomatic hypotension. Additive effects with concomitant antihypertensives (eg, amlodipine). Plasma levels increased by inhibitors of CYP3A4 (eg, ketoconazole, itraconazole, erythromycin, saquinavir, ritonavir) or CYP2C9, or cimetidine. Plasma levels reduced by inducers of CYP3A4 (eg, rifampin). Concomitant other erectile dysfunction treatments: not recommended",
     directions: "Take 1 dose as needed about 1 hr (½–4 hrs) before sexual activity at frequency of up to once daily. Initially 50mg. May reduce dose to 25mg or increase to max of 100mg. Elderly, hepatic impairment, severe renal impairment, or concomitant potent CYP3A4 inhibitors (eg, erythromycin, ketoconazole, itraconazole, saquinavir): consider initial dose of 25mg. Concomitant ritonavir: max single sildenafil dose of 25mg in 48hrs. Concomitant α-blockers (patients should be stable on α-blocker therapy before starting): initially 25mg.",
     picture: "viagra.jpg",
-    isPrescription:true
+    isPrescription: true
 }, {
     name: "Mucinex",
     classification: "Expectorant",
@@ -80,7 +80,19 @@ var meds = [{
     interactions: "Concomitant live vaccines, biologic DMARDs or potent immunosuppressants (eg, azathioprine, cyclosporine): not recommended. Potentiated by potent CYP3A4 inhibitors (eg, ketoconazole), or drugs that result in both moderate CYP3A4 and potent CYP2C19 (eg, fluconazole) inhibition. Antagonized by potent CYP3A4 inducers (eg, rifampin); see Adults.",
     directions: "Swallow whole. 1–2 tabs every 12 hours. Max: 4 tabs/day",
     picture: "mucinex.jpg",
-    isPrescription:true
+    isPrescription: true
+}, {
+    name: "Oxycodone HCl",
+    classification: "Opioid",
+    indication: "pain severe ",
+    supply: "10 mg, 15 mg, 20 mg, 30 mg, 40 mg, 60 mg, and 80 mg tablets for oral administration",
+    price: 0.99,
+    description: "A strong prescription pain medicine that contains an opioid (narcotic) that is used to manage pain severe enough to require daily around-the-clock, long-term treatment with an opioid, when other pain treatments such as non-opioid pain medicines or immediate-release opioid medicines do not treat your pain well enough or you cannot tolerate them.",
+    warnings: "Head injury. Increased intracranial pressure. CNS depression. Coma. Toxic psychosis. Convulsive disorders. Shock. Severe renal or hepatic impairment. Impaired pulmonary, thyroid, or adrenocortical function. GI or GU obstruction. Acute abdomen. Biliary tract disease. Acute pancreatitis. Kyphoscoliosis (associated with respiratory depression). Drug abusers. Acute alcoholism. Delirium tremens. Elderly. Debilitated. Pregnancy (Cat.B). Labor & delivery, nursing mothers: not recommended.",
+    interactions: "Potentiation with alcohol, other CNS depressants, anticholinergics, MAOIs, tricyclic antidepressants, phenothiazines, general anesthetics, skeletal muscle relaxants. Possible withdrawal symptoms with mixed opioid agonist/antagonists.",
+    directions: "A single dose greater than 40 mg, or a total daily dose greater than 80 mg are only for use in patients in whom tolerance to an opioid of comparable potency has been established.",
+    picture: "oxycodone.jpg",
+    isPrescription: true
 }, {
     name: "FIORICET w. CODEINE",
     classification: "Opioid + barbiturate + analgesic/antipyretic + CNS stimulant",
@@ -92,8 +104,9 @@ var meds = [{
     interactions: "May be potentiated by MAOIs. May potentiate alcohol, general anesthetics, tranquilizers, sedative-hypnotics, other narcotic analgesics or CNS depressants. Induction of drug-metabolizing hepatic enzymes. Acetaminophen may cause false (+) urine test for 5-hydroxyindoleacetic acid. Codeine may increase serum amylase levels.",
     directions: "1–2 caps every 4hrs; max 6/da",
     picture: "fiorcetcodeine.jpg",
-    isPrescription:true
+    isPrescription: true
 }, ];
+
 
 
 module.exports = function(grunt) {
