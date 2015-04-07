@@ -7,18 +7,19 @@ var users = [{
     username: 'ktoler',
     email: 'ken@medcellar.com',
     password: 'slapdabass',
-    role:'admin'
+    role: 'admin'
 }, {
     username: 'bob',
     email: 'bob@medcellar.com',
     password: 'bobdole',
-    role:'admin'
+    role: 'admin'
 }, {
     username: 'gellerb',
     email: 'geller@medcellar.com',
     password: 'magellan',
-    role:'user'
+    role: 'user'
 }, ];
+
 
 var meds = [{
     name: "Percocet",
@@ -84,8 +85,8 @@ var meds = [{
 }, {
     name: "Oxycodone HCl",
     classification: "Opioid",
-    indication: "pain severe ",
-    supply: "10 mg, 15 mg, 20 mg, 30 mg, 40 mg, 60 mg, and 80 mg tablets for oral administration",
+    indication: "pain severe",
+    supply: "10,15,20,30,40,60, 80 mg tablets for oral administration",
     price: 0.99,
     description: "A strong prescription pain medicine that contains an opioid (narcotic) that is used to manage pain severe enough to require daily around-the-clock, long-term treatment with an opioid, when other pain treatments such as non-opioid pain medicines or immediate-release opioid medicines do not treat your pain well enough or you cannot tolerate them.",
     warnings: "Head injury. Increased intracranial pressure. CNS depression. Coma. Toxic psychosis. Convulsive disorders. Shock. Severe renal or hepatic impairment. Impaired pulmonary, thyroid, or adrenocortical function. GI or GU obstruction. Acute abdomen. Biliary tract disease. Acute pancreatitis. Kyphoscoliosis (associated with respiratory depression). Drug abusers. Acute alcoholism. Delirium tremens. Elderly. Debilitated. Pregnancy (Cat.B). Labor & delivery, nursing mothers: not recommended.",
@@ -93,6 +94,42 @@ var meds = [{
     directions: "A single dose greater than 40 mg, or a total daily dose greater than 80 mg are only for use in patients in whom tolerance to an opioid of comparable potency has been established.",
     picture: "oxycodone.jpg",
     isPrescription: true
+}, {
+    name: "Glyburide",
+    classification: "sulfonylurea",
+    indication: "An adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
+    supply: "Tabs 1.25mg—50; 2.5mg—100; 5mg—100",
+    price: 8.00,
+    description: "Glyburide is used along with diet and exercise, and sometimes with other medications, to treat type 2 diabetes (condition in which the body does not use insulin normally and, therefore, cannot control the amount of sugar in the blood).",
+    warnings: "Increased risk of cardiovascular mortality. Renal or hepatic impairment. Adrenal or pituitary insufficiency. Stress. Secondary failure may occur with extended therapy. Risk of hemolytic anemia in G6PD deficiency; consider non-sulfonylurea alternative. Monitor urine, fasting blood glucose, and HbA1c levels periodically. Discontinue if jaundice or hepatitis occurs. Sulfonamide allergy.",
+    interactions: "May be potentiated by NSAIDs, ACEIs, disopyramide, fluoxetine, clarithromycin, coumarin, alcohol, highly protein bound drugs, salicylates, sulfonamides, chloramphenicol, probenecid, MAOIs, β-blockers, oral miconazole (possibly), fluroquinolones. Antagonized by diuretics, steroids, phenothiazines, thyroid products, estrogens, oral contraceptives, phenytoin, niacin, sympathomimetics, calcium channel blockers, isoniazid.",
+    directions: "The usual starting dose of Diaβeta as initial therapy is 2.5 to 5 mg daily, administered with breakfast or the first main meal. Those patients who may be more sensitive to hypoglycemic drugs should be started at 1.25 mg daily.",
+    picture: "glyburide.jpg",
+    isPrescription: true
+}, {
+    name: "Claritin",
+    classification: "Antihistamine",
+    indication: "Indicated for the relief of nasal and non-nasal symptoms of seasonal allergic rhinitis and for the treatment of chronic idiopathic urticaria in patients 2 years of age or older.",
+    supply: "Tabs—10, 20, 30; Liqui-Gels—10, 24, 40; Chewables—5, 10",
+    price: 8.98,
+    description: "Loratadine is a white to off-white powder not soluble in water, but very soluble in acetone, alcohol, and chloroform.",
+    warnings: "Before taking loratadine, tell your doctor or pharmacist if you are allergic to it; or to desloratadine; or if you have any other allergies.",
+    interactions: "Loratadine (10 mg once daily) has been coadministered with therapeutic doses of erythromycin, cimetidine, and ketoconazole in controlled clinical pharmacology studies in adult volunteers.",
+    directions: "The recommended dose of CLARITIN (loratadine) is one 10 mg tablet or reditab, or 2 teaspoonfuls (10 mg) of syrup once daily.",
+    picture: "claritin.png",
+    isPrescription: false
+}, {
+    name: "Dimenhydrinate",
+    classification: "Antihistamine",
+    indication: "Motion sickness prophylaxis",
+    supply: "Tabs—12, 36, 100; Chewable—8, 24",
+    price: 3.98,
+    description: "Used to prevent and treat nausea, vomiting, and dizziness caused by motion sickness",
+    warnings: "Asthma or chronic respiratory disease. Glaucoma. Arrhythmias. GI or urinary obstruction. Phenylketonuria (chewable tabs). Pregnancy (Cat.B). Nursing mothers: not recommended.",
+    interactions: "Potentiates CNS depression with alcohol, other CNS depressants. May potentiate ototoxicity of antibiotics (esp. aminoglycosides).",
+    directions: "50–100mg every 4–6 hours, starting ½–1 hour before travel",
+    picture: "dimenhydrinate.jpg",
+    isPrescription: false
 }, {
     name: "FIORICET w. CODEINE",
     classification: "Opioid + barbiturate + analgesic/antipyretic + CNS stimulant",
@@ -108,19 +145,19 @@ var meds = [{
 }, ];
 
 
-
 module.exports = function(grunt) {
     grunt.initConfig({
         exec: {
             dropdb: 'mongo meddb --eval "db.dropDatabase()"',
             dropusers: 'mongo meddb --eval "db.users.drop()"',
+            dropmeds: 'mongo meddb --eval "db.meds.drop()"',
             run: 'nodemon server.js'
-            },
+        },
         env: {
             dev: {
                 MED_CONF: path.resolve('./config/config.json')
-                },
-            weak:{
+            },
+            weak: {
                 MED_CONF: path.resolve('./config/weakconfig.json')
             }
         },
@@ -133,9 +170,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-available-tasks');
 
-    grunt.registerTask('deployweak', ['exec:dropdb','builddb:md5','env:weak', 'exec:run']);
+    grunt.registerTask('deployweak', ['exec:dropdb', 'builddb:md5', 'env:weak', 'exec:run']);
 
-    grunt.registerTask('deploy', ['exec:dropdb','builddb:bcrypt','env:dev', 'exec:run']);
+    grunt.registerTask('deploy', ['exec:dropdb', 'builddb:bcrypt', 'env:dev', 'exec:run']);
 
     grunt.registerTask('tasks', ['availabletasks']);
 
@@ -154,7 +191,7 @@ module.exports = function(grunt) {
                 directions: insertion.directions,
                 picture: insertion.picture,
                 isPrescription: insertion.isPrescription
-                });
+            });
             console.log(med);
             med.save(function(err) {
                 if (err) {
@@ -178,7 +215,7 @@ module.exports = function(grunt) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("User: " + user.username + "with role:" + user.role+" Saved.");
+                    console.log("User: " + user.username + "with role:" + user.role + " Saved.");
                 }
             });
         });
