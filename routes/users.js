@@ -64,7 +64,6 @@ userSchema.pre('save', function(next) {
     if (config.hashDigest.toLowerCase() === 'md5') {
         try {
             user.password = crypto.MD5(user.password).toString();
-            //user.hashDigest = 'md5';
             next();
         } catch (ex) {
             next(ex);
@@ -78,7 +77,6 @@ userSchema.pre('save', function(next) {
             bcrypt.hash(user.password, salt, function(err, hash) {
                 if (err) return next(err);
                 user.password = hash;
-                //user.hashDigest = 'bcrypt';
                 next();
             });
         });
@@ -170,34 +168,28 @@ exports.login = function(req, res, next) {
 };
 
 exports.register = function(req, res, next) {
-
     var user = new User();
     user.username = req.param('username');
-    // TODO - Refactor
+    user.password = req.param('password');
     if (config.hashDigest.toLowerCase() === 'bcrypt') {
         user.hashDigest = 'bcrypt';
     }
     if (config.hashDigest.toLowerCase() === 'md5') {
         user.hashDigest = 'md5';
     }
-    //user.password = createHash(password);
-    user.password = req.param('password');
     user.email = req.param('email');
     user.role = req.param('role');
-
+    console.log(user);
     user.save(function(err) {
         if (err) {
             console.log('Error in Saving user: ' + err);
-            throw err;
+            return res.redirect('/#register');
+
         }
         console.log('User Registration succesful');
-        return done(null, user);
+        return res.redirect('/#login');
     });
-    // TODO - Redirect
-    res.redirect('/#login');
 };
-
-
 
 exports.ensureAuth = function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
