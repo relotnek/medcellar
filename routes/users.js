@@ -56,9 +56,7 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', function(next) {
-    // logic is only required if registration page is added
 
-    /*
     var user = this;
 
     if (!user.isModified('password')) return next();
@@ -83,7 +81,6 @@ userSchema.pre('save', function(next) {
             });
         });
     }
-    */
 });
 
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
@@ -171,11 +168,23 @@ exports.login = function(req, res, next) {
 };
 
 exports.register = function(req, res, next) {
-    passport.use('signup', new LocalStrategy({
+
+    /*
+    // populdateDB() - legacy code
+    var user = new User({ username: 'ktoler', email: 'ktoler@ktoler.com', password: 'slapdabass'});
+    user.save(function(err){
+        if(err){
+            console.log(err);
+        } else {
+            console.log('user: ' + user.username + ' saved.');
+        }
+    });
+    */
+
+    passport.use('local', new LocalStrategy({
             passReqToCallback: true
         },
         function(req, username, password, done) {
-
             findOrCreateUser = function() {
                 User.findOne({
                     'username': username
@@ -188,12 +197,14 @@ exports.register = function(req, res, next) {
                         console.log('User already exists with username: ' + username);
                         return done(null, false, req.flash('message', 'User Already Exists'));
                     } else {
-                        var newUser = new User();
-                        newUser.username = username;
-                        newUser.password = createHash(password);
-                        newUser.email = req.param('email');
-                        newUser.role = req.param('firstName');
-                        newUser.save(function(err) {
+                        var user = new User();
+                        user.username = username;
+                        //nuser.password = createHash(password);
+                        user.password = password;
+                        user.email = req.param('email');
+                        user.role = req.param('role');
+                        console.log(user);                  // DEBUG
+                        user.save(function(err) {
                             if (err) {
                                 console.log('Error in Saving user: ' + err);
                                 throw err;
@@ -204,12 +215,13 @@ exports.register = function(req, res, next) {
                     }
                 });
             };
-            // Delay the execution of findOrCreateUser and execute the method
+            // delay the execution of findOrCreateUser and execute the method
             // in the next tick of the event loop
             process.nextTick(findOrCreateUser);
         }));
 
     var createHash = function(password) {
+        // TODO Ability to switch between MD5 & BCrypt
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
 };

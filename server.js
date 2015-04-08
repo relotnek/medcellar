@@ -53,10 +53,6 @@ app.configure(function() {
     app.use(passport.session());
     app.use(express.static(path.join(__dirname, 'public')));
 });
-
-app.get('/register', function(req,res){
-    res.redirect('/#register');
-});
 app.get('/login', function(req,res){
     res.redirect('/#login');
 });
