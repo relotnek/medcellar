@@ -54,6 +54,9 @@ app.configure(function() {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
+app.get('/register', function(req,res){
+    res.redirect('/#register');
+});
 app.get('/login', function(req,res){
     res.redirect('/#login');
 });
@@ -62,6 +65,7 @@ app.get('/logout',function(req,res){
     res.redirect('/');
 });
 app.post('/login', user.login);
+app.post('/register', user.register);
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);
 app.post('/meds', user.ensureAuth, med.addMed);
@@ -77,7 +81,7 @@ if (config.transportSecurity) {
     https.createServer(options, app).listen(443);
 }
 
-if (!config.transportsecurity) {
+if (!config.transportSecurity) {
     http.createServer(app).listen(
         app.get('port'),
         function() {

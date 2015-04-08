@@ -2,17 +2,29 @@ var AppRouter = Backbone.Router.extend({
 
     routes: {
         ""                  : "home",
-        "meds"	: "list",
+        "meds"              : "list",
         "meds/page/:page"	: "list",
-        "meds/add"         : "addMed",
-        "meds/:id"         : "medDetails",
+        "meds/add"          : "addMed",
+        "meds/:id"          : "medDetails",
         "about"             : "about",
-        "login"             : "login"
+        "login"             : "login",
+        "register"          : "register",
     },
 
     initialize: function () {
         this.headerView = new HeaderView();
         $('.header').html(this.headerView.el);
+
+        /*
+        Backbone._sync = Backbone.sync;
+        // override original sync method to make header request contain csrf token
+        Backbone.sync = function(method, model, options, error){
+            options.beforeSend = function(xhr){
+                xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-param']").attr('content'));
+            };
+            return Backbone._sync(method, model, options, error);
+        };
+        */
     },
 
     home: function (id) {
@@ -61,12 +73,18 @@ var AppRouter = Backbone.Router.extend({
             this.loginView = new LoginView();
         }
         $('#content').html(this.loginView.el);
+    },
 
+    register: function() {
+        if (!this.registerView) {
+            this.registerView = new RegisterView();
+        }
+        $('#content').html(this.registerView.el);
     }
 
 });
 
-utils.loadTemplate(['HomeView', 'HeaderView', 'MedView', 'MedListItemView', 'AboutView','LoginView'], function() {
+utils.loadTemplate(['HomeView', 'HeaderView', 'MedView', 'MedListItemView', 'AboutView','LoginView', 'RegisterView'], function() {
     app = new AppRouter();
     Backbone.history.start();
 });
