@@ -61,7 +61,6 @@ var AppRouter = Backbone.Router.extend({
             this.loginView = new LoginView();
         }
         $('#content').html(this.loginView.el);
-        $('#content').append(Backbone.CSRFToken);
         $('#csrf').html("<input type=hidden name=_csrf value=" + Backbone.CSRFToken + "></input>");
     }
 
