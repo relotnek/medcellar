@@ -1,11 +1,16 @@
 <div class="login-hero">
-    <h1>Med Cellar</h1>
+    <h1>Med Cellar Registration</h1>
     <div class="well well-sm">
-        <form action="/login" method="post">
+        <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input name="username" type="text" class="form-control" id="username" placeholder="Enter Username"></input>
             </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" type="text" class="form-control" id="email" placeholder="Enter Email"></input>
+            </div>
+            <input type=hidden name=role value="user"></input>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password"></input>
@@ -13,6 +18,5 @@
             <div id="csrf"></div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <a class="btn btn-default" href="#register">Register</a>
     </div>
 </div>

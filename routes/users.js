@@ -56,9 +56,7 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.pre('save', function(next) {
-    // logic is only required if registration page is added
 
-    /*
     var user = this;
 
     if (!user.isModified('password')) return next();
@@ -83,7 +81,6 @@ userSchema.pre('save', function(next) {
             });
         });
     }
-    */
 });
 
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
@@ -168,6 +165,30 @@ exports.login = function(req, res, next) {
             return res.redirect('/#meds');
         });
     })(req, res, next);
+};
+
+exports.register = function(req, res, next) {
+    var user = new User();
+    user.username = req.param('username');
+    user.password = req.param('password');
+    if (config.hashDigest.toLowerCase() === 'bcrypt') {
+        user.hashDigest = 'bcrypt';
+    }
+    if (config.hashDigest.toLowerCase() === 'md5') {
+        user.hashDigest = 'md5';
+    }
+    user.email = req.param('email');
+    user.role = req.param('role');
+    console.log(user);
+    user.save(function(err) {
+        if (err) {
+            console.log('Error in Saving user: ' + err);
+            return res.redirect('/#register');
+
+        }
+        console.log('User Registration succesful');
+        return res.redirect('/#login');
+    });
 };
 
 exports.ensureAuth = function ensureAuthenticated(req, res, next) {
