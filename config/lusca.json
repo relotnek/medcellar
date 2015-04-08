@@ -1,7 +1,7 @@
 {
     "environment": "development",
-    "middleware": "helmet",
+    "middleware": "lusca",
     "hashDigest": "bcrypt",
-    "transportSecurity": true,
+    "transportsecurity": false,
     "accessLog": "access.log"
 }

@@ -4,9 +4,19 @@ var crypto = require('crypto-js');
 var bcrypt = require('bcrypt');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var fs = require('fs');
+var util = require('util');
 var config = require(process.env.MED_CONF);
 var SALT_WORK_FACTOR = 1;
 
+
+var accessLogStream = fs.createWriteStream(config.accessLog, {
+    flags: 'a'
+});
+
+console.log = function(d) {
+    accessLogStream.write(util.format(d) + '\n');
+};
 
 mongoose.connect('localhost', 'meddb');
 var db = mongoose.connection;
@@ -47,6 +57,7 @@ var userSchema = mongoose.Schema({
 
 userSchema.pre('save', function(next) {
     // logic is only required if registration page is added
+
     /*
     var user = this;
 
@@ -76,6 +87,8 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
+
+    console.log('comparePassword() - candidatePassword:' + candidatePassword);
 
     if (config.hashDigest.toLowerCase() === 'md5') {
         var candidateHash = crypto.MD5(candidatePassword).toString();
@@ -122,7 +135,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
         user.comparePassword(password, function(err, isMatch) {
             if (err) return done(err);
             if (isMatch) {
-               return done(null, user);
+                return done(null, user);
             } else {
                 return done(null, false, {
                     message: 'Invalid password'
@@ -131,6 +144,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
         });
     });
 }));
+
 
 exports.findAll = function(req, res) {
     res.send({
