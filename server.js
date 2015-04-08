@@ -28,7 +28,13 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
-    // helmet.js configuration
+    app.use(express.session({
+        secret: 'applesandpears',
+        cookie: {
+            maxAge: 3600000 // see below
+        }
+    }));
+    // helmet.js Configuration
     if (config.middleware === 'helmet') {
         app.use(helmet.hidePoweredBy());
         app.use(helmet.noCache());
