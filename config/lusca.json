@@ -3,5 +3,6 @@
     "middleware": "lusca",
     "hashDigest": "bcrypt",
     "transportsecurity": false,
+    "csrf":	true,
     "accessLog": "access.log"
 }

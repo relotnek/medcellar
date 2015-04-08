@@ -11,6 +11,7 @@ var express = require('express'),
     fs = require('fs'),
     compression = require('compression'),
     minify = require('express-minify'),
+    expressHbs = require('express-handlebars'),
     config = require(process.env.MED_CONF);
 
 var app = express();
@@ -46,21 +47,27 @@ app.configure(function() {
             hsts: {maxAge: 31536000, includeSubDomains: true}
         }));
     }
+    app.engine('hbs', expressHbs({extname:'hbs'}));
+    app.set('view engine', 'hbs');
     app.use(express.session({
         secret: 'applesandpears'
     }));
-    // CSRF
-    app.use(express.csrf());
-    app.use(function(req, res, next){
-        res.locals.token = req.session._csrf;
-        next();
-    });
-    // ADD meta(name="csrf-token", content="#{token}")
+    if(config.csrf) {
+        app.use(express.csrf());
+    }
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
+app.get('/', function(req,res){
+    if(config.csrf){
+        res.render('index',{token: req.csrfToken()});
+    }
+    if(!config.csrf){
+        res.render('index');
+    }
+});
 app.get('/login', function(req,res){
     res.redirect('/#login');
 });

@@ -3,5 +3,6 @@
     "middleware": "helmet",
     "hashDigest": "bcrypt",
     "transportSecurity": true,
+    "csrf":	true,
     "accessLog": "access.log"
 }

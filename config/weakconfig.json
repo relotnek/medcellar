@@ -3,6 +3,7 @@
     "middleware": "none",
     "hashDigest" : "md5",
     "transportsecurity": false,
+    "csrf":	false,
     "accessLog": "access.log"
 }
 
