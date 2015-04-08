@@ -181,50 +181,24 @@ exports.register = function(req, res, next) {
     });
     */
 
-    passport.use('local', new LocalStrategy({
-            passReqToCallback: true
-        },
-        function(req, username, password, done) {
-            findOrCreateUser = function() {
-                User.findOne({
-                    'username': username
-                }, function(err, user) {
-                    if (err) {
-                        console.log('Error in SignUp: ' + err);
-                        return done(err);
-                    }
-                    if (user) {
-                        console.log('User already exists with username: ' + username);
-                        return done(null, false, req.flash('message', 'User Already Exists'));
-                    } else {
-                        var user = new User();
-                        user.username = username;
-                        //nuser.password = createHash(password);
-                        user.password = password;
-                        user.email = req.param('email');
-                        user.role = req.param('role');
-                        console.log(user);                  // DEBUG
-                        user.save(function(err) {
-                            if (err) {
-                                console.log('Error in Saving user: ' + err);
-                                throw err;
-                            }
-                            console.log('User Registration succesful');
-                            return done(null, newUser);
-                        });
-                    }
-                });
-            };
-            // delay the execution of findOrCreateUser and execute the method
-            // in the next tick of the event loop
-            process.nextTick(findOrCreateUser);
-        }));
+    var user = new User();
+    user.username = req.param('username');
+    //user.password = createHash(password);
+    user.password = req.password('password');
+    user.email = req.param('email');
+    user.role = req.param('role');
+    console.log(user); // DEBUG
+    user.save(function(err) {
+        if (err) {
+            console.log('Error in Saving user: ' + err);
+            throw err;
+        }
+        console.log('User Registration succesful');
+        return done(null, user);
+    });
 
-    var createHash = function(password) {
-        // TODO Ability to switch between MD5 & BCrypt
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-    }
 };
+
 
 
 exports.ensureAuth = function ensureAuthenticated(req, res, next) {
