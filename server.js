@@ -82,6 +82,7 @@ app.get('/logout',function(req,res){
     res.redirect('/');
 });
 app.post('/login', user.login);
+app.post('/register', user.register);
 app.get('/meds', user.ensureAuth, med.findAll);
 app.get('/meds/:id', user.ensureAuth, med.findById);
 app.post('/meds', user.ensureAuth, med.addMed);
