@@ -1,6 +1,7 @@
 {
     "environment": "development",
-    "middleware": "helmet",
+    "helmet": true,
+    "lusca": false,
     "hashDigest": "bcrypt",
     "transportSecurity": true,
     "csrf":	true,

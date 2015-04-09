@@ -35,13 +35,13 @@ app.configure(function() {
         }
     }));
     // helmet.js Configuration
-    if (config.middleware === 'helmet') {
+    if (config.helmet) {
         app.use(helmet.hidePoweredBy());
         app.use(helmet.noCache());
         app.use(helmet.noSniff());
         app.use(helmet.frameguard());
     // lusca.js configuration
-    } else if (config.middleware === 'lusca') {
+    } else if (config.lusca) {
         app.use(lusca({
             csrf: true,
             xframe: 'SAMEORIGIN',
