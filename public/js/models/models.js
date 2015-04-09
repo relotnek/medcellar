@@ -72,6 +72,7 @@ window.Med = Backbone.Model.extend({
         warnings: "No Warnings",
         interactions: "No Interactions",
         supply: "No Supply",
+        isPrescription: false,
         price: 0
     }
 });
