@@ -28,15 +28,15 @@ window.Med = Backbone.Model.extend({
         });
         */
 
-        // CSRF - Method 2
-        Backbone._sync = Backbone.sync;
-        Backbone.sync = function(method, model, options, error) {
-            options.beforeSend = function(xhr) {
-                xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-            };
-            /* proxy the call to the old sync method */
-            return Backbone._sync(method, model, options, error);
-        };
+        // // CSRF - Method 2
+        // Backbone._sync = Backbone.sync;
+        // Backbone.sync = function(method, model, options, error) {
+        //     options.beforeSend = function(xhr) {
+        //         xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+        //     };
+        //     /* proxy the call to the old sync method */
+        //     return Backbone._sync(method, model, options, error);
+        // };
 
     },
 
