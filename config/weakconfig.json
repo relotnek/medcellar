@@ -1,7 +1,6 @@
 {
     "environment": "weak",
     "helmet":false,
-    "lusca":false,
     "hashDigest" : "md5",
     "transportsecurity": false,
     "csrf":	false,

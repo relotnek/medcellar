@@ -40,14 +40,8 @@ app.configure(function() {
         app.use(helmet.noCache());
         app.use(helmet.noSniff());
         app.use(helmet.frameguard());
-    // lusca.js configuration
-    } else if (config.lusca) {
-        app.use(lusca({
-            csrf: true,
-            xframe: 'SAMEORIGIN',
-            xssProtection: true
-        }));
     }
+
     if (config.transportSecurity) {
         app.use(lusca({
             hsts: {maxAge: 31536000, includeSubDomains: true}
