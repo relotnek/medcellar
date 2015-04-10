@@ -15,15 +15,25 @@ window.Med = Backbone.Model.extend({
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a description"};
         };
         // add csrf for ajax requests
-        var CSRF_HEADER = 'X-CSRF-Token';
-        $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
-            options.xhrFields = {
-                withCredentials: false
-            };
-            if (Backbone.CSRFToken) {
-                jqXHR.setRequestHeader(CSRF_HEADER, Backbone.CSRFToken);
-            }
-        });
+        // var CSRF_HEADER = 'X-CSRF-Token';
+        // $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+        //     options.xhrFields = {
+        //         withCredentials: false
+        //     };
+        //     if (Backbone.CSRFToken) {
+        //         jqXHR.setRequestHeader(CSRF_HEADER, Backbone.CSRFToken);
+        //     }
+        // });
+
+        // // // CSRF - Method 2
+        // // Backbone._sync = Backbone.sync;
+        // // Backbone.sync = function(method, model, options, error) {
+        // //     options.beforeSend = function(xhr) {
+        // //         xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+        // //     };
+        // //     /* proxy the call to the old sync method */
+        // //     return Backbone._sync(method, model, options, error);
+        // // };
 
     },
 
@@ -59,6 +69,7 @@ window.Med = Backbone.Model.extend({
         warnings: "No Warnings",
         interactions: "No Interactions",
         supply: "No Supply",
+        isPrescription: false,
         price: 0
     }
 });
