@@ -29,7 +29,7 @@ app.configure(function() {
     app.use(express.cookieParser());
     app.use(express.methodOverride());
     app.use(express.session({
-        secret: 'applesandpears',
+        secret: 'penandteller',
         cookie: {
             maxAge: 3600000 // see below
         }
@@ -57,9 +57,6 @@ app.configure(function() {
     }
     app.engine('hbs', expressHbs({extname:'hbs'}));
     app.set('view engine', 'hbs');
-    app.use(express.session({
-        secret: 'applesandpears'
-    }));
     if(config.csrf) {
         app.use(express.csrf());
     }
