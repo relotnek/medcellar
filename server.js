@@ -40,6 +40,14 @@ app.configure(function() {
         app.use(helmet.noCache());
         app.use(helmet.noSniff());
         app.use(helmet.frameguard());
+        app.use(helmet.xssFilter());
+        /*
+        app.use(helmet.hsts());
+        app.use(helmet.hpkp());
+        app.use(helmet.contentSecurityPolicy({
+            cspStuff: ['cspValues']
+        }));
+        */
     }
 
     if (config.transportSecurity) {
