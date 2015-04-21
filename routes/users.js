@@ -118,6 +118,7 @@ passport.deserializeUser(function(id, done) {
 var User = mongoose.model('User', userSchema);
 
 passport.use(new LocalStrategy(function(username, password, done) {
+    console.log('login() - username:' + username);
     User.findOne({
         username: username
     }, function(err, user) {
