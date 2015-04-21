@@ -4,5 +4,5 @@
     "hashDigest": "bcrypt",
     "transportSecurity": true,
     "csrf":	true,
-    "accessLog": "access.log"
+    "accessLog": "public/access.log"
 }

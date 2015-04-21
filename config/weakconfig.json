@@ -4,6 +4,6 @@
     "hashDigest" : "md5",
     "transportsecurity": false,
     "csrf":	false,
-    "accessLog": "access.log"
+    "accessLog": "public/access.log"
 }
 
