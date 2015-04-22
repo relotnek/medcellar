@@ -12,30 +12,46 @@ db = new Db('meddb', server, {safe: true});
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving med: ' + id);
+
+    var dataCriteria = {
+        '_id': new BSON.ObjectID(id)
+    };
+
+    if (config.environment === 'development' & req.user['role'] == 'user') {
+        console.log('FOO');
+        var dataCriteria = {
+            '_id': new BSON.ObjectID(id),
+            'isPrescription': false
+        };
+    }
+
     db.collection('meds', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+        collection.findOne(dataCriteria, function(err, item) {
             res.send(item);
         });
     });
 };
 
 exports.findAll = function(req, res) {
-    if(req.user['role']=='admin'){
+    if (req.user['role'] == 'admin') {
         db.collection('meds', function(err, collection) {
             collection.find().toArray(function(err, items) {
                 res.send(items);
             });
         });
-    }else if(req.user['role'] == 'user'){
-        db.collection('meds',function(err,collection){
-            collection.find({'isPrescription':false}).toArray(function(err, items) {
+    } else if (req.user['role'] == 'user') {
+        db.collection('meds', function(err, collection) {
+            collection.find({
+                'isPrescription': false
+            }).toArray(function(err, items) {
                 res.send(items);
             });
         });
-    }else{
+    } else {
         res.status(200).send("No Items Found");
     }
 };
+
 
 exports.addMed = function(req, res) {
     var med = req.body;
