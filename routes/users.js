@@ -119,8 +119,9 @@ var User = mongoose.model('User', userSchema);
 
 passport.use(new LocalStrategy(function(username, password, done) {
     console.log('login() - username:' + username);
+    if (config.hashDigest.toLowerCase() === 'md5') {
     User.findOne({
-        username: username
+        username: username, password: crypto.MD5(password).toString()
     }, function(err, user) {
         if (err) {
             return done(err);
@@ -130,17 +131,30 @@ passport.use(new LocalStrategy(function(username, password, done) {
                 message: 'Unknown user ' + username
             });
         }
-        user.comparePassword(password, function(err, isMatch) {
-            if (err) return done(err);
-            if (isMatch) {
-                return done(null, user);
-            } else {
-                return done(null, false, {
-                    message: 'Invalid password'
-                });
-            }
-        });
+        return done(null,user);
     });
+    }
+    if (config.hashDigest.toLowerCase() === 'bcrypt') {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    });
+    }
+    else {
+    User.findOne({
+        username: username, password: password
+    }, function(err, user) {
+        if (err) {
+            return done(err);
+        }
+        if (!user) {
+            return done(null, false, {
+                message: 'Unknown user ' + username
+            });
+        }
+        return done(null,user);
+    });
+    }
 }));
 
 

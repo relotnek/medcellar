@@ -81,6 +81,11 @@ userSchema.pre('save', function(next) {
           });
       });
   }
+
+  else {
+    user.password = user.password;
+    next();
+  }
 });
 
 

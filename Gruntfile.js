@@ -169,7 +169,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-available-tasks');
-
+    grunt.registerTask('deployweaknohash', ['exec:dropdb', 'builddb:none', 'env:weak', 'exec:run']);
     grunt.registerTask('deployweak', ['exec:dropdb', 'builddb:md5', 'env:weak', 'exec:run']);
 
     grunt.registerTask('deploy', ['exec:dropdb', 'builddb:bcrypt', 'env:dev', 'exec:run']);

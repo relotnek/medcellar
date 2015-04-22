@@ -1,7 +1,7 @@
 {
     "environment": "weak",
     "helmet":false,
-    "hashDigest" : "md5",
+    "hashDigest" : "none",
     "transportsecurity": false,
     "csrf":	false,
     "accessLog": "public/access.log"
