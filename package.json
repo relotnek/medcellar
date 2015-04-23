@@ -20,6 +20,7 @@
     "requiresafe": "^1.2.2",
     "retire": "^1.0.0",
     "sanitizer": "^0.1.2",
+    "express-handlebars": "1.2.2",
     "socket.io": "0.9.10"
   },
   "engines": {
@@ -32,6 +33,7 @@
     "grunt-contrib-jshint": "^0.11.1",
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
+    "grunt-cli": "^0.1.13",
     "underscore": "^1.8.2"
   }
 }
