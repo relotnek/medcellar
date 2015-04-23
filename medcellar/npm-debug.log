@@ -1,0 +1,51 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'express-handlebars:1.2.2' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 warn package.json requiresafe@1.2.2 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'express-handlebars:1.2.2', null ]
+7 verbose cache add name=undefined spec="express-handlebars:1.2.2" args=["express-handlebars:1.2.2",null]
+8 verbose parsed url { protocol: 'express-handlebars:',
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: '1.2.2',
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: '1.2.2',
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: null,
+8 verbose parsed url   path: null,
+8 verbose parsed url   href: 'express-handlebars:1.2.2' }
+9 silly lockFile 1c1de045-express-handlebars-1-2-2 express-handlebars:1.2.2
+10 verbose lock express-handlebars:1.2.2 /Users/kentoler/.npm/1c1de045-express-handlebars-1-2-2.lock
+11 silly lockFile 1c1de045-express-handlebars-1-2-2 express-handlebars:1.2.2
+12 silly lockFile 1c1de045-express-handlebars-1-2-2 express-handlebars:1.2.2
+13 verbose addNamed [ 'express-handlebars:1.2.2', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile 8b989d00-express-handlebars-1-2-2 express-handlebars:1.2.2@
+16 verbose lock express-handlebars:1.2.2@ /Users/kentoler/.npm/8b989d00-express-handlebars-1-2-2.lock
+17 silly addNameRange { name: 'express-handlebars:1.2.2', range: '*', hasData: false }
+18 error TypeError: Cannot call method 'replace' of null
+18 error     at cf (/usr/local/lib/node_modules/npm/node_modules/npm-cache-filename/index.js:14:22)
+18 error     at RegClient.get (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:28:20)
+18 error     at addNameRange (/usr/local/lib/node_modules/npm/lib/cache/add-named.js:201:12)
+18 error     at /usr/local/lib/node_modules/npm/lib/cache/add-named.js:47:5
+18 error     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:30:7
+18 error     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+18 error     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:171:16
+18 error     at Object.oncomplete (fs.js:107:15)
+19 error If you need help, you may report this *entire* log,
+19 error including the npm and node versions, at:
+19 error     <http://github.com/npm/npm/issues>
+20 error System Darwin 14.3.0
+21 error command "node" "/usr/local/bin/npm" "install" "express-handlebars:1.2.2"
+22 error cwd /Users/kentoler/Development/nodecellar/medcellar
+23 error node -v v0.10.33
+24 error npm -v 1.4.28
+25 error type non_object_property_call
+26 verbose exit [ 1, true ]

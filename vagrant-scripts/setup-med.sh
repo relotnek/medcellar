@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir /opt/medcellar
-cp -R /vagrant/nodecellar/* /opt/medcellar
+cp -R /vagrant/medcellar/* /opt/medcellar
 
 
 cd /opt/medcellar
