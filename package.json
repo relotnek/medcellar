@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "bcrypt": "^0.8.2",
-    "crypto-js": "3.1.2",
+    "crypto-js": "^3.1.4",
     "express": "3.x",
     "helmet": "^0.7.1",
     "lusca": "^1.0.2",
@@ -19,6 +19,7 @@
     "compression": "1.4.3",
     "retire": "^1.0.0",
     "requiresafe": "^1.2.2",
+    "express-handlebars": "^1.0.0",
     "socket.io": "0.9.10"
   },
   "engines": {
@@ -31,6 +32,7 @@
     "grunt-contrib-jshint": "^0.11.1",
     "grunt-env": "^0.4.4",
     "grunt-exec": "^0.4.6",
+    "grunt-cli": "^0.1.13",
     "underscore": "^1.8.2"
   }
 }
