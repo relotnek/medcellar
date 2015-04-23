@@ -1,6 +1,6 @@
 /node_modules
 /.idea
-db/
+/db/
 Procfile
 .gitignore
 access.log
