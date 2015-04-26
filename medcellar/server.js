@@ -52,9 +52,14 @@ app.configure(function() {
 
     if (config.transportSecurity) {
         app.use(lusca({
-            hsts: {maxAge: 31536000, includeSubDomains: true}
+            hsts: {
+                maxAge: 31536000,
+                includeSubDomains: true,
+                preload: true
+            }
         }));
     }
+
     app.engine('hbs', expressHbs({extname:'hbs'}));
     app.set('view engine', 'hbs');
     if(config.csrf) {
