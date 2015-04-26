@@ -1,7 +1,8 @@
-/node_modules
+medcellar/node_modules
 /,vagrant
 /.idea
-/db/
+medcellar/db/
 Procfile
 .gitignore
-access.log
+medcellar/access.log
+medcellar/public/access.log
