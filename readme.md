@@ -57,6 +57,7 @@ vagrant box add phusion/ubuntu-14.04-amd64 https://atlas.hashicorp.com/phusion/b
 ```
 
 ```js
+vagrant up --provision
 vagrant ssh
 cd /opt/medcellar
 ```
