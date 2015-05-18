@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir /opt/medcellar
+mkdir -p /opt/medcellar
 cp -R /vagrant/medcellar/* /opt/medcellar
 
 
