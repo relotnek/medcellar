@@ -12,6 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :medcellar do |app|
     app.vm.box = "phusion/ubuntu-14.04-amd64"
+    app.vm.box_url = "https://atlas.hashicorp.com/phusion/boxes/ubuntu-14.04-amd64/versions/2014.04.30/providers/virtualbox.box"
 
     app.vm.provider "virtualbox" do |v|
         #v.gui = true
