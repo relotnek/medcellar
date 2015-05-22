@@ -55,6 +55,11 @@ exports.findAll = function(req, res) {
 
 exports.addMed = function(req, res) {
     var med = req.body;
+    if( config.environment === 'development'){
+        for(var i in med){
+            med[i] = sanitizer.sanitize(med[i]);
+        }
+    }
     console.log('Adding med: ' + JSON.stringify(med));
     db.collection('meds', function(err, collection) {
         collection.insert(med, {safe:true}, function(err, result) {
