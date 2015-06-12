@@ -1,4 +1,4 @@
-var mongo = require('mongodb');
+    var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var crypto = require('crypto-js');
 var bcrypt = require('bcrypt');
@@ -17,6 +17,11 @@ var accessLogStream = fs.createWriteStream(config.accessLog, {
 console.log = function(d) {
     accessLogStream.write(util.format(d) + '\n');
 };
+
+function validateEmailFormat(string) {
+        var emailExpression = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return emailExpression.test( string );
+}
 
 mongoose.connect('localhost', 'meddb');
 var db = mongoose.connection;
@@ -179,13 +184,16 @@ exports.register = function(req, res, next) {
         user.hashDigest = 'md5';
     }
     user.email = req.param('email');
+    validEmail = validateEmailFormat(user.email);
+    if (!validEmail) {
+        return res.redirect('/#register');
+    }
     user.role = req.param('role');
     console.log(user);
     user.save(function(err) {
         if (err) {
             console.log('Error in Saving user: ' + err);
             return res.redirect('/#register');
-
         }
         console.log('User Registration succesful');
         return res.redirect('/#login');
